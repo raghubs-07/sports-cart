@@ -1,0 +1,7 @@
+<ul class="wishlist-items">
+    {{#each wishlist.items}}
+        <li class="wishlist-item">
+            {{> goose/products/g-card-wishlist id=product_id theme_settings=../theme_settings}}  
+        </li>
+    {{/each}}
+</ul>

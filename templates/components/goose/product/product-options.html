@@ -1,0 +1,44 @@
+{{!-- 
+    Modified Product Template - To Pull Product Options on Pack Product    
+--}}
+
+<div class="productView-options product-view-options">
+    <h3 class="heading u-layout-margin-bottom-1">{{product.title}}</h3>
+
+    {{> components/common/responsive-img
+        image=product.main_image
+        class="productView-image--sub-product u-layout-margin-bottom-1"
+        fallback_size=theme_settings.product_size
+        lazyload=theme_settings.lazyload_mode
+        default_image=theme_settings.default_image_product
+    }}
+
+    {{#if product.release_date }}
+        <p>{{product.release_date}}</p>
+    {{/if}}
+    <form class="form sub-product" data-product-id="{{product.id}}">
+        <div>
+            {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
+            {{#each product.options}}
+                {{{dynamicComponent 'components/products/options'}}}
+            {{/each}}
+        </div>
+
+
+        {{!-- <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+            <label class="form-label form-label--alternate">
+                {{lang 'products.current_stock'}}
+                <span data-product-stock>{{product.stock_level}}</span>
+            </label>
+        </div> --}}
+
+        {{#if product.out_of_stock}}
+            {{#if product.out_of_stock_message}}
+                {{> components/common/alert/alert-error product.out_of_stock_message}}
+            {{else}}
+                {{> components/common/alert/alert-error (lang 'products.sold_out')}}
+            {{/if}}
+        {{/if}}
+        
+    </form>    
+</div>

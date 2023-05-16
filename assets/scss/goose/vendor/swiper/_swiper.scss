@@ -1,0 +1,60 @@
+// Button
+.swiper-button-prev,
+.swiper-button-next {
+    border-radius: 50%;
+    border: 1px solid g-colour("gray", "20");
+    background-color: g-colour("gray", "0");
+    width: 48px;
+    height: 48px;
+    position: relative;
+
+    &:hover {
+        background-color: g-colour("gray", "10");
+    }
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.swiper-button-prev {
+    margin-right: spacing-scale("4");
+    &:after {
+        background-image: url("data:image/svg+xml,%3Csvg width='25' height='14' viewBox='0 0 25 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.1657 13.0139L7.03467 12.1863L1.84898 6.74136L7.01344 1.83512L6.18694 0.965122L0.151397 6.69889L6.1657 13.0139Z' fill='black'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M25 6.40015L1 6.40015L1 7.60015L25 7.60015L25 6.40015Z' fill='black'/%3E%3C/svg%3E%0A");
+    }
+}
+
+.swiper-button-next {
+    &:after {
+        background-image: url("data:image/svg+xml,%3Csvg width='25' height='14' viewBox='0 0 25 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.8343 13.0139L17.9653 12.1863L23.151 6.74136L17.9866 1.83512L18.8131 0.965122L24.8486 6.69889L18.8343 13.0139Z' fill='black'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 6.40015L24 6.40015L24 7.60015L-1.04907e-07 7.60015L0 6.40015Z' fill='black'/%3E%3C/svg%3E%0A");
+    }
+}
+
+.swiper-button-disabled {
+    // opacity: 0.75 !important;
+    background-color: g-colour("gray", "10");
+    border-color: g-colour("gray", "10");
+}
+
+// ScrollBar
+.swiper-scrollbar {
+    max-width: 240px;
+    overflow: hidden;
+    position: relative !important;
+    background: g-colour("gray", "20");
+    height: 8px !important;
+    border-radius: 0;
+    margin: 0 auto;
+    bottom: 0 !important;
+}
+
+.swiper-scrollbar-drag {
+    background: g-colour("red", "40");
+    border-radius: 0;
+}

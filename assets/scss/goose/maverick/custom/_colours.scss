@@ -1,0 +1,96 @@
+:root,
+[data-theme="default"] {
+    // Gray
+    @include defineColourHSL(--colour-gray-0, 0, 0%, 100%);
+    @include defineColourHSL(--colour-gray-10, 240, 5%, 96%);
+    @include defineColourHSL(--colour-gray-20, 240, 5%, 88%);
+    @include defineColourHSL(--colour-gray-30, 240, 4%, 76%);
+    @include defineColourHSL(--colour-gray-40, 240, 4%, 60%);
+    @include defineColourHSL(--colour-gray-50, 240, 5%, 40%);
+    @include defineColourHSL(--colour-gray-60, 240, 15%, 28%);
+    @include defineColourHSL(--colour-gray-70, 240, 15%, 16%);
+    @include defineColourHSL(--colour-gray-80, 240, 14%, 4%);
+    @include defineColourHSL(--colour-gray-100, 0, 0%, 0%);
+
+    // Red
+    @include defineColourHSL(--colour-red-10, 9, 100%, 92%);
+    @include defineColourHSL(--colour-red-20, 0, 89%, 72%);
+    @include defineColourHSL(--colour-red-30, 358, 79%, 60%);
+    @include defineColourHSL(--colour-red-40, 358, 79%, 50%);
+    @include defineColourHSL(--colour-red-50, 3, 100%, 32%);
+    @include defineColourHSL(--colour-red-60, 3, 100%, 24%);
+
+    // Blue
+    @include defineColourHSL(--colour-blue-10, 235, 64%, 88%);
+    @include defineColourHSL(--colour-blue-20, 235, 65%, 54%);
+
+    // Green
+    @include defineColourHSL(--colour-green-10, 112, 78%, 84%);
+    @include defineColourHSL(--colour-green-20, 112, 77%, 51%);
+    @include defineColourHSL(--colour-green-50, 112, 77%, 32%);
+
+    // Yellow
+    @include defineColourHSL(--colour-yellow-10, 52, 100%, 84%);
+    @include defineColourHSL(--colour-yellow-20, 52, 100%, 50%);
+}
+
+$goose--colours: (
+    "gray": (
+        "100": #{var(--colour-gray-100)},
+        "80": #{var(--colour-gray-80)},
+        "70": #{var(--colour-gray-70)},
+        "60": #{var(--colour-gray-60)},
+        "50": #{var(--colour-gray-50)},
+        "40": #{var(--colour-gray-40)},
+        "30": #{var(--colour-gray-30)},
+        "20": #{var(--colour-gray-20)},
+        "10": #{var(--colour-gray-10)},
+        "0": #{var(--colour-gray-0)},
+    ),
+    "red": (
+        "60": #{var(--colour-red-60)},
+        "50": #{var(--colour-red-50)},
+        "40": #{var(--colour-red-40)},
+        "30": #{var(--colour-red-30)},
+        "20": #{var(--colour-red-20)},
+        "10": #{var(--colour-red-10)},
+    ),
+    "blue": (
+        "20": #{var(--colour-blue-20)},
+        "10": #{var(--colour-blue-10)},
+    ),
+    "green": (
+        "50": #{var(--colour-green-50)},
+        "20": #{var(--colour-green-20)},
+        "10": #{var(--colour-green-10)},
+    ),
+    "yellow": (
+        "20": #{var(--colour-yellow-20)},
+        "10": #{var(--colour-yellow-10)},
+    ),
+    "accent": (
+        "darker": #{var(--colour-red-60)},
+        "dark": #{var(--colour-red-50)},
+        "base": #{var(--colour-red-40)},
+        "light": #{var(--colour-red-30)},
+        "lighter": #{var(--colour-red-20)},
+        "lightest": #{var(--colour-red-10)},
+    ),
+    "success": (
+        "dark": #{var(--colour-green-50)},
+        "base": #{var(--colour-green-20)},
+        "light": #{var(--colour-green-10)},
+    ),
+    "warning": (
+        "base": #{var(--colour-yellow-20)},
+        "light": #{var(--colour-yellow-10)},
+    ),
+    "error": (
+        "base": #{var(--colour-red-20)},
+        "light": #{var(--colour-red-10)},
+    ),
+    "info": (
+        "base": #{var(--colour-blue-20)},
+        "light": #{var(--colour-blue-10)},
+    ),
+);

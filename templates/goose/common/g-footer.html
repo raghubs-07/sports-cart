@@ -1,0 +1,115 @@
+<footer>
+    <section class="g-footer">
+        <div class="g-footer__main u-grid-container">
+            <div class="g-footer__main__brand">
+                <div class="logo">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo-contrast"></use>
+                    </svg>
+                </div>
+                <div class="g-footer__newsletter">
+                    {{> goose/common/g-mini-newsletter-block}}
+                </div>
+                <div class="g-footer__social g-social-links">
+                    {{> components/common/social-links}}
+                </div>
+            </div>
+            <div class="g-footer__main__nav-primary">
+                <ul class="list">
+                    {{#each pages}}
+                        {{#if name '===' 'footer-navigation-hook'}}
+                            {{#each children}}
+                                {{#if name '===' 'featured-hook'}}
+                                    {{#each children}}
+                                        <li class="list__item"><a href="{{url}}">{{first (split name '-')}}</a></li>
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="g-footer__main__nav-secondary g-accordion g-accordion--dark">
+                <div class="column g-accordion__item" aria-expanded="false" aria-selected="false">
+                    <div class="g-accordion__title g-accordion__toggle">
+                        <h6 class="heading g-accordion__heading">Shop</h6>
+                        <div class="g-accordion__toggle__icon">
+                            <svg class="open-close-icon">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-minus"></use>
+                            </svg>
+                            <svg class="open-close-icon open-close-icon--animate">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-minus"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="g-accordion__content">
+                        <ul class="list">
+                            {{#each pages}}
+                                {{#if name '===' 'footer-navigation-hook'}}
+                                    {{#each children}}
+                                        {{#if name '===' 'shop-hook'}}
+                                            {{#each children}}
+                                                <li class="list__item"><a href="{{url}}">{{first (split name '-')}}</a></li>
+                                            {{/each}}
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="column g-accordion__item" aria-expanded="false" aria-selected="false">
+                    <div class="g-accordion__title g-accordion__toggle">
+                        <h6 class="heading g-accordion__heading">Support</h6>
+                        <div class="g-accordion__toggle__icon">
+                            <svg class="open-close-icon">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-minus"></use>
+                            </svg>
+                            <svg class="open-close-icon open-close-icon--animate">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-minus"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="g-accordion__content">
+                        <ul class="list">
+                            {{#each pages}}
+                                {{#if name '===' 'footer-navigation-hook'}}
+                                    {{#each children}}
+                                        {{#if name '===' 'support-hook'}}
+                                            {{#each children}}
+                                                <li class="list__item"><a href="{{url}}">{{first (split name '-')}}</a></li>
+                                            {{/each}}
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-container">
+            <div class="g-footer__contact-bar">
+                {{> goose/common/g-contact-bar}}
+            </div>
+        </div>
+        <div class="u-container g-footer__legal">
+            <div class="legal">
+                <div class="legal__copyright">&copy; {{moment format="YYYY"}} {{settings.store_name}}</div>
+                <ul class="legal__list">
+                    <li class="legal__list__item"><a href="/terms-conditions">Terms</a></li>
+                    <li class="legal__list__item"><a href="/privacy-policy">Privacy</a></li>
+                    <li class="legal__list__item"><a href="/sitemap">Sitemap</a></li>
+                    <li class="legal__list__item">ABN: 78 641 501 411</li>
+                </ul>
+            </div>
+            <div class="review-count">
+     <!-- TrustBox widget - Micro TrustScore -->
+<div class="trustpilot-widget" data-locale="en-US" data-stars="4,5" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="5067e68a00006400051c564c" data-style-height="20px" data-style-width="100%" data-theme="dark">
+    <a href="https://www.trustpilot.com/review/www.marketsports.com.au" target="_blank" rel="noopener">Trustpilot</a>
+  </div>
+  <!-- End TrustBox widget -->
+            </div>
+        </div>
+    </section>
+</footer>

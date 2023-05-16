@@ -1,0 +1,195 @@
+.page--product {
+    .promo-bar {
+        @include breakpoint("medium") {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.product-view {
+    margin-bottom: spacing-scale("11");
+
+    .trustpilot-widget {
+        padding: spacing-scale("4") 0;
+        text-align: left;
+    }
+
+    &__images {
+        position: relative;
+        grid-column: span 100 / auto;
+
+        @include breakpoint("small") {
+            grid-column: span 30 / auto;
+        }
+
+        &__icon {
+            position: absolute;
+            top: spacing-scale("4");
+            right: spacing-scale("4");
+
+            @include breakpoint("small") {
+                display: none;
+            }
+
+            .wl-icon {
+                width: remCalc(28px);
+                height: remCalc(28px);
+
+                svg {
+                    width: remCalc(28px);
+                    height: remCalc(28px);
+                }
+            }
+        }
+    }
+
+    &__details {
+        grid-column: span 100 / auto;
+
+        @include breakpoint("small") {
+            grid-column: span 18 / auto;
+            position: sticky;
+            top: spacing-scale("8");
+            height: min-content;
+        }
+    }
+
+    &__product {
+        margin-bottom: spacing-scale("5");
+    }
+
+    .stamped-product-reviews-badge.stamped-main-badge {
+        margin-bottom: spacing-scale("3");
+    }
+
+    afterpay-placement {
+        margin: 0;
+    }
+}
+
+.product-view-options {
+    .heading {
+        font-size: g-heading("4");
+    }
+}
+
+// Product Name & Subtitle
+.product-view__title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: spacing-scale("4");
+
+    .heading {
+        display: block;
+        font-size: g-heading("3");
+
+        @include breakpoint("small") {
+            margin-right: spacing-scale("8");
+        }
+    }
+
+    &__icon {
+        display: none;
+
+        .wl-icon {
+            width: remCalc(30px);
+            height: remCalc(30px);
+        }
+
+        svg {
+            width: remCalc(30px);
+            height: remCalc(30px);
+        }
+
+        @include breakpoint("small") {
+            display: block;
+        }
+    }
+
+    .wl-icon {
+        // width: remCalc(40px);
+        // height: remCalc(40px);
+    }
+}
+
+.product-view__subtitle {
+    margin-bottom: spacing-scale("3");
+
+    .heading {
+        font-size: g-heading("5");
+        color: g-colour("red", "50");
+        font-weight: g-font-weight("bold");
+    }
+}
+
+// Product Price
+.product-view__price {
+    margin-bottom: spacing-scale("3");
+
+    .price {
+        font-weight: g-font-weight("bold");
+        font-size: var(--text-preset-6);
+        &--non-sale {
+            margin-right: spacing-scale("2");
+        }
+    }
+}
+
+// Product Rating
+.product-view__rating {
+}
+
+// Add to cart actions
+.add-to-cart {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: spacing-scale("4");
+
+    .form-field--increments {
+        @include breakpoint("xsmall") {
+            width: 50%;
+        }
+
+        @include breakpoint("small") {
+            width: auto;
+        }
+    }
+
+    .form-increment {
+        margin-right: spacing-scale("5");
+        border-radius: var(--btn-radius);
+        height: remCalc(48px);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-action {
+        flex: 1 0%;
+    }
+
+    .form-field {
+        margin-bottom: 0;
+    }
+}
+
+// Secondary Buttons
+.product-view .add-to-cart-wallet-buttons {
+    margin-bottom: spacing-scale("2");
+}
+
+// Product description tabs
+.product-view-description {
+    margin-bottom: calc(#{spacing-scale("8")} * 2);
+}
+
+// Related & Also Liked Products
+.page--product {
+    .product-row__title {
+        font-size: var(--text-preset-6);
+
+        @include breakpoint("small") {
+            font-size: var(--text-preset-7);
+        }
+    }
+}

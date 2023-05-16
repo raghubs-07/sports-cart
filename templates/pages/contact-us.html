@@ -1,0 +1,76 @@
+{{#partial "page"}}
+
+<div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+</div>
+
+<section class="contact-page">
+    <div class="contact-page__section contact-page__intro-wrap u-container text-component ">
+        <div class="contact-page__intro">
+            <h1 class="u-heading-4 u-spacing-margin-bottom-none">{{page.title}}</h1>
+            <h2 class="sub-heading  "><strong>We’re here to help. Ask us!</strong></h2>
+            <p>Being an online AFL Shop, we prefer email contact as it helps to keep our prices down and allows us to fully investigate your comments and questions before responding. Rest assured, we treat replying to your emails as a top priority.</p>
+            <p>Remember you can always check out the FAQ in the help section above for a selection of commonly asked questions and answers.</p>
+            
+            <a href="/about-us" class="g-button g-button--primary">Learn more about Market Sports Online</a>
+            <a href="#faqs" class="g-button g-button--ghost g-button--icon g-button--icon-right"><strong>See our FAQs</strong>  <svg><use xlink:href="#icon-chevron-right" /></svg></a>
+
+            <hr />
+            <div id="contact-us-page">
+                {{#if forms.contact.success}}
+                    <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+                {{else}}
+                    <p>{{{page.content}}}</p>
+                    {{> goose/contact/contact-us-form}}
+                {{/if}}
+            </div>
+        </div>
+            
+        <div class="contact-page__contacts">
+            <div class="contact-details-block">
+                <ul class="contact-details__list">
+                    <li class="contact-details__item">
+                        <div class="contact-details-block__label">
+                            Email us at:
+                        </div>
+                        <div class="contact-details-block__detail">
+                            <a href="mailto:support@marketsports.com.au">support@marketsports.com.au</a>
+                        </div>
+                    </li>
+                    <li class="contact-details__item">
+                        <div class="contact-details-block__label">
+                            Call us on:
+                        </div>
+                        <div class="contact-details-block__detail">
+                            <a href="tel:1300 401 520">1300 401 520</a>
+                        </div>
+                    </li>
+                    <li class="contact-details__item">
+                        <div class="contact-details-block__label">
+                        Write to us at:
+                        </div>
+                        <div class="contact-details-block__detail">
+                            Market Sports Online <br />
+                            6/44 Bailey Crescent <br />
+                            Southport, 4215 <br />
+                            QLD, AUSTRALIA <br />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-page__section contact-page__faq" id="faqs">
+        <div class="u-container">
+            <h2 class="u-heading-d1 heading">FAQs</h2>
+            <p>The answers to your most fequently asked questions.</p><br /><br />
+
+            <div class="contact-page__faqs faqs" data-target-content="faq" data-faqs></div>
+        </div>
+    </div>
+</section>
+
+
+{{/partial}}
+
+{{> layout/base}}

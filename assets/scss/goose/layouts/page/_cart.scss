@@ -1,0 +1,103 @@
+.cart-view {
+    @include breakpoint("medium") {
+        display: flex;
+        flex-wrap: wrap;
+        float: none;
+    }
+
+    // Heading Section
+
+    &__header {
+        margin-top: spacing-scale("7");
+        margin-bottom: spacing-scale("8");
+
+        @include breakpoint("medium") {
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: spacing-scale("12");
+        }
+    }
+
+    &__status {
+        flex-basis: 100%;
+        margin-bottom: spacing-scale("4");
+    }
+
+    &__continue-button {
+        display: flex;
+        align-items: center;
+        font-size: var(--text-preset-3);
+        text-decoration: none;
+        color: g-colour("gray", "80");
+        margin-bottom: spacing-scale("4");
+
+        svg {
+            width: 30px;
+            height: 10px;
+            margin-right: spacing-scale("5");
+        }
+    }
+
+    .page-heading {
+        margin-bottom: spacing-scale("6");
+    }
+
+    &__header-section:last-child {
+        text-align: center;
+
+        @include breakpoint("medium") {
+            text-align: right;
+        }
+    }
+
+    // Content
+
+    &__items {
+        @include breakpoint("medium") {
+            flex-basis: 60%;
+            padding-right: layout-scale("7");
+        }
+    }
+
+    &__summary {
+        @include breakpoint("medium") {
+            flex-basis: 40%;
+        }
+
+        .cart-totals {
+            width: 100%;
+            background-color: g-colour("gray", "10");
+            padding: spacing-scale("6");
+            text-align: left;
+        }
+
+        .cart-total {
+            + .cart-total {
+                border: none;
+            }
+        }
+    }
+
+    &__empty {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        margin: calc(#{spacing-scale("12")} * 2) 0;
+
+        .g-button {
+            max-width: 400px;
+        }
+
+        .heading {
+            margin-bottom: spacing-scale("9");
+        }
+    }
+}
+
+.page--cart {
+    margin: 0 !important;
+}

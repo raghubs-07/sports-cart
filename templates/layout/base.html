@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script>
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script>
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+        <script src="{{cdn 'assets/js/flickity.js'}}"></script>
+        
+        {{getFontsCollection font-display='block'}}
+        
+        <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+
+        <!-- TrustBox script -->
+        <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+        <!-- End TrustBox script -->
+
+        {{{stylesheet '/assets/css/theme.css'}}}
+        {{{stylesheet '/assets/scss/flickity.css'}}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'zoomSize' theme_settings.zoom_size}}
+        {{~inject 'productSize' theme_settings.product_size}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
+        {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
+        {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+        {{~inject 'customer' customer}}
+        {{inject 'storefront_api' settings.storefront_api.token}}
+        {{~inject 'token' settings.storefront_api.token}}
+        {{~inject 'placeholder_product' (cdn theme_settings.default_image_product)}}
+        {{~inject 'themeSettings' theme_settings}}
+        {{~inject 'categories' categories}}
+        <script>
+            const graphQlToken = '{{settings.storefront_api.token}}';
+        </script>
+    </head>
+
+    {{#each categories}}
+        {{#if name '===' 'AFL Store'}}
+            {{inject 'aflTeams'  children}}
+        {{/if}}
+
+        {{#if name '===' 'NRL Shop'}}
+            {{inject 'nrlTeams'  children}}
+        {{/if}}
+    {{/each}}
+
+    <body class="
+        {{#if page_type '===' 'default'}}
+            page--home
+        {{/if}}
+
+        {{#if page_type '===' 'cart'}}
+            page--cart
+        {{/if}}
+
+        {{#if page_type '===' 'product'}}
+            page--product
+        {{/if}}
+
+        {{#if page_type '===' 'category'}}
+            page--category
+        {{/if}}
+
+        {{#if page_type '===' 'blog'}}
+            page--blog
+        {{/if}}
+    ">
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+        {{> goose/common/g-main-navigation }}
+        {{> goose/common/g-header }}
+        {{> components/common/body }}
+        {{> goose/common/g-footer }}
+        {{> goose/common/g-minicart }}
+        {{> goose/common/g-wishlist }}
+        {{> goose/common/g-account-nav }}
+
+        <div class="modal-background"></div>
+
+        <div class="modal-background"></div>
+
+        <div class="modal-background"></div>
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script>
+            {{!-- Exported in app.js --}}
+            function onThemeBundleMain() {
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+            }
+        </script>
+        <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
+
+        {{{footer.scripts}}}
+
+        {{> goose/common/g-overlay }}
+
+        <!--Gorgias Chat Widget Start-->
+        <script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=26951"></script>
+        <!--Gorgias Chat Widget End-->
+    </body>
+</html>

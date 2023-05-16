@@ -1,0 +1,76 @@
+.utility-icons {
+    display: flex;
+    line-height: 0;
+
+    a {
+        display: block;
+
+        &:focus {
+            box-shadow: 0 0 0 2px #1a73e8;
+        }
+    }
+
+    svg {
+        width: remCalc(40px);
+        height: remCalc(40px);
+    }
+
+    &__icon {
+        width: remCalc(40px);
+        height: remCalc(40px);
+        margin-right: spacing-scale("2");
+
+        @include breakpoint("medium") {
+            margin-right: spacing-scale("6");
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &__club {
+        fill: g-colour("red", "50");
+        display: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @include breakpoint("medium") {
+            display: block;
+        }
+    }
+
+    &__search {
+        display: block;
+
+        @include breakpoint("medium") {
+            display: none;
+        }
+    }
+
+    &__account {
+        display: none;
+
+        @include breakpoint("medium") {
+            display: block;
+        }
+    }
+
+    &__account {
+        @include breakpoint("small") {
+            position: relative;
+        }
+    }
+
+    &__wishlist {
+        svg {
+            // fill: g-colour("gray", "0");
+        }
+    }
+
+    &__cart {
+        position: relative;
+    }
+}

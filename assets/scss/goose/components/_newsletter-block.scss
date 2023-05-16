@@ -1,0 +1,77 @@
+.newsletter-block {
+    background-color: g-colour("gray", "10");
+    padding: spacing-scale("8") 0;
+
+    @include breakpoint("medium") {
+        padding: spacing-scale("12") 0;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint("small") {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__col:last-child {
+        @include breakpoint("small") {
+            flex-basis: 70%;
+        }
+
+        @include breakpoint("medium") {
+            flex-basis: 50%;
+        }
+    }
+
+    &__header {
+        margin-bottom: spacing-scale("4");
+
+        @include breakpoint("medium") {
+            margin-bottom: 0;
+        }
+    }
+
+    &__heading {
+        margin-bottom: spacing-scale("2");
+
+        @include breakpoint("medium") {
+            margin-bottom: spacing-scale("2");
+        }
+    }
+
+    &__description {
+        font-size: var(--text-preset-3);
+    }
+
+    // Form
+    .form-prefixPostfix.wrap {
+        flex-direction: column;
+
+        @include breakpoint("small") {
+            flex-wrap: nowrap !important;
+            flex-direction: row;
+        }
+    }
+
+    .form-input {
+        margin-bottom: spacing-scale("3");
+
+        @include breakpoint("small") {
+            margin-right: spacing-scale("3");
+            flex-basis: 70%;
+            margin-bottom: 0;
+        }
+    }
+
+    .g-button {
+        width: 100%;
+
+        @include breakpoint("small") {
+            width: auto;
+        }
+    }
+}

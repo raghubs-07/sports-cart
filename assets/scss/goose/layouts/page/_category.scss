@@ -1,0 +1,69 @@
+.catgeory-view__header {
+    text-align: center;
+    margin-top: spacing-scale("8");
+    margin-bottom: spacing-scale("8");
+
+    @include breakpoint("medium") {
+        margin-top: 0;
+    }
+}
+
+.catgory-view__top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: spacing-scale("4");
+}
+
+.category-view__facets-bar {
+    @include breakpoint("small") {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.category-view__fitler-toggle {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: g-colour("gray", "80");
+
+    i {
+        line-height: 0;
+        margin-right: spacing-scale("4");
+
+        svg {
+            width: remCalc(20px);
+            height: remCalc(20px);
+        }
+    }
+}
+
+.team-category {
+    background: g-colour("gray", "10");
+    padding: spacing-scale("8") 0;
+    // margin-bottom: spacing-scale("8");
+
+    @include breakpoint("medium") {
+        margin-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--team-primary-colour, g-colour("gray", "100"));
+        padding: spacing-scale("8");
+        margin-bottom: spacing-scale("8");
+
+        svg {
+            max-width: remCalc(150px);
+        }
+    }
+
+    &__ladders {
+        > .heading {
+            margin-bottom: spacing-scale("6");
+        }
+    }
+}

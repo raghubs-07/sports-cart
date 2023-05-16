@@ -1,0 +1,156 @@
+<div class="mc__products-container" data-cart-quantity="{{cart.quantity}}" data-cart-content>
+
+    <div class="mc__notice-container">
+        <!-- To be populated via g-mini-cart.js -->
+    </div>
+    {{#if cart.quantity '>' 0}}
+    <div class="mc__products-list">
+        {{#each cart.items}}
+            <div class="mc__product" data-item-row>
+                <!-- Left block -->
+                <div class="mc__product__figure-container">
+                    <div class="mc__product__figure">
+                        {{#if type '==' 'GiftCertificate'}}
+                            <img
+                                class="cart-item-fixed-image"
+                                src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                                alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                                title="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                            >
+                        {{else}}
+                            {{> components/common/responsive-img
+                                image=image
+                                class="mc__product-image"
+                                fallback_size=../theme_settings.productthumb_size
+                                lazyload="lazyload"
+                                default_image=../theme_settings.default_image_product
+                            }}
+                        {{/if}}
+                    </div>
+                </div>
+                <!-- Right block -->
+                <div class="mc__product__detail">
+                            <a class="mc__product__title" href="{{url}}">{{name}}</a>
+                        {{#if release_date}}
+                            <p class="mc__product__info">({{release_date}})</p>
+                        {{/if}}
+    
+                        <div class="mc__product__price-container">
+                            {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+                            <span class="mc__product__price {{#if price_discounted}}price--discounted{{/if}}">{{price.formatted}}</span>
+                            {{#if price_discounted}}
+                                <span class="mc__product__price">{{price_discounted.formatted}}</span>
+                            {{/if}}
+                            {{else}}
+                                {{> components/common/login-for-pricing}}
+                            {{/or}}
+                        </div>
+                        
+                        {{#if options}}
+                            <dl class="definitionList">
+                                {{#each options}}
+                                    <dt class="definitionList-key">{{name}}:</dt>
+                                    <dd class="definitionList-value">
+                                        {{#if is_file}}
+                                            <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">{{value}}</a>
+                                        {{else}}
+                                            {{> components/common/product-options}}
+                                        {{/if}}
+                                    </dd>
+                                {{/each}}
+                            </dl>
+                        {{/if}}
+    
+                        {{#if type '==' 'GiftCertificate'}}
+                            <a href="{{edit_url}}"
+                               aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
+                            >
+                                {{lang 'common.change'}}
+                            </a>
+                        {{/if}}
+                        {{!-- Disable Gift Wrapping Completely -- #contains (pluck custom_fields "name") "Gift Wrapping"}}
+                            {{#each custom_fields}}
+                                {{#if name '==' "Gift Wrapping"}}
+                                    {{#unless (toLowerCase value) '==' 'false'}}
+                                        {{> components/cart/item-giftwrap this}}
+                                    {{/unless}}
+                                {{/if}}
+                            {{/each}}
+                        {{else}}
+                            {{> components/cart/item-giftwrap this}}
+                        {{/contains --}}
+     
+                    <div class="mc__product__bottom">
+                        <div class="mc__product__qty-container cart-item-quantity">
+                            <label class="form-label cart-item-label" for="qty-{{id}}">{{lang 'products.quantity'}}</label>
+                            <div class="form-increment">
+                                {{#if can_modify}}
+                                <button class="button button--icon"
+                                        data-g-cart-update
+                                        data-cart-itemid="{{id}}"
+                                        data-action="inc"
+                                >
+                                    <span class="is-srOnly">{{lang 'products.quantity_increase' name=name}}</span>
+                                    <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-g-chevron-up" /></svg></i>
+                                </button>
+                            {{/if}}
+                                <input class="form-input form-input--incrementTotal cart-item-qty-input"
+                                    id="qty-{{id}}"
+                                    name="qty-{{id}}"
+                                    type="tel"
+                                    value="{{quantity}}"
+                                    data-quantity-min="{{min_purchase_quantity}}"
+                                    data-quantity-max="{{max_purchase_quantity}}"
+                                    data-quantity-min-error="{{lang 'products.quantity_min' quantity=min_purchase_quantity}}"
+                                    data-quantity-max-error="{{lang 'products.quantity_max' quantity=max_purchase_quantity}}"
+                                    min="1"
+                                    pattern="[0-9]*"
+                                    data-cart-itemid="{{id}}"
+                                    data-action="manualQtyChange"
+                                    aria-label="{{name}}"
+                                    aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
+                                {{#if can_modify}}
+                                <button class="button button--icon"
+                                        data-g-cart-update
+                                        data-cart-itemid="{{id}}"
+                                        data-action="dec"
+                                >
+                                    <span class="is-srOnly">{{lang 'products.quantity_decrease' name=name}}</span>
+                                    <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-g-chevron-down" /></svg></i>
+                                </button>
+                            {{/if}}
+                            </div>
+                        </div>
+                        {{#or can_modify (if type '==' 'GiftCertificate')}}
+                            <button class="mc__product__cart-remove g-cart-remove"
+                                    data-cart-itemid="{{id}}"
+                                    data-confirm-delete="{{lang 'cart.confirm_delete'}}"
+                                    aria-label="{{lang 'cart.remove_item' name=name}}"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/>
+                                </svg>
+                            </button>
+                        {{/or}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    {{else}}
+
+    <div class="mc__empty-cart">    
+        <p class="mc__empty-cartMessage">Your cart is empty</p>
+
+        {{#each this.categories}}
+            {{#if name '===' 'Shop All'}}
+                {{#each children}}
+                    <a href="{{url}}" class="g-button g-button--primary g-button--fullbleed">{{name}}</a>
+                {{/each}}
+
+                <a href="/shop-all" class="g-button g-button--secondary g-button--fullbleed">Start Shopping</a>
+            {{/if}}
+        {{/each}}
+    </div>
+    {{/if}}
+</div>

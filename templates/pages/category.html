@@ -1,0 +1,227 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{~inject "total_products" this.category.total_products}}
+
+{{#each categories}}
+    {{#if is_active '===' true}}
+        {{#or (if name '===' 'NRL Shop') (if name '===' 'AFL Store')}}
+            {{!-- Get an array like string of team names and assign to a variable --}}
+            {{assignVar 'teamNames' (JSONstringify (pluck children "name")) }}
+
+            {{#if children}}
+                {{#each children}}
+                    {{#if is_active '===' true}}
+                        {{#contains (split (getVar 'teamNames') '"') ../../category.name}}
+                            {{#each ../../theme_settings.teams}}
+                                {{#if name '===' (dashcase ../name)}}
+                                    <style>
+                                        :root {
+                                            --team-primary-colour: {{primary_brand_colour}};
+                                        }
+                                    </style>
+                                {{/if}}
+                            {{/each}}
+                            <section class="team-category">
+                                <div class="u-container">
+                                    <div class="team-category__header">
+                                        <svg class="icon-teams-{{toLowerCase (dashcase name)}}-alternative" title="{{name}}">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase name)}}-alternative"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="u-container">
+                                    <div class="team-category__ladders">
+                                        <h3 class="heading">Best Selling Ladder</h3>
+                                        <div class="ladders">
+                                            {{> goose/common/g-product-ladder category=../../category name="Men" sorturl="?Age+Group=Men"}} 
+                                            {{> goose/common/g-product-ladder category=../../category name="Women" sorturl="?Age+Group=Women"}} 
+                                            {{> goose/common/g-product-ladder category=../../category name="Youth" sorturl="?Age+Group=Youth"}}                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        {{else}}
+                            {{#each children}}
+                                {{#if is_active '===' true}}
+                                    {{#if name '===' "Shop All"}}
+                                        {{#each ../../../theme_settings.teams}}
+                                            {{#if name '===' (dashcase ../../name)}}
+                                                 <style>
+                                                    :root {
+                                                        --team-primary-colour: {{primary_brand_colour}};
+                                                    }
+                                                </style>
+                                            {{/if}}
+                                        {{/each}}
+                                        <section class="team-category">
+                                            <div class="u-container">
+                                                <div class="team-category__header">
+                                                    <svg class="icon-teams-{{toLowerCase (dashcase ../name)}}" title="{{../name}}">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase ../name)}}"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="u-container">
+                                                <div class="team-category__ladders">
+                                                    <h3 class="heading">Best Selling Ladder</h3>
+                                                    <div class="ladders">
+                                                        {{> goose/common/g-product-ladder category=../../../category name="Men" sorturl="?Age+Group=Men"}} 
+                                                        {{> goose/common/g-product-ladder category=../../../category name="Women" sorturl="?Age+Group=Women"}} 
+                                                        {{> goose/common/g-product-ladder category=../../../category name="Youth" sorturl="?Age+Group=Youth"}}                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}} 
+                        {{/contains}}
+                    {{/if}}
+                {{/each}}
+            {{else}}
+
+                {{#each ../../../theme_settings.teams}}
+                    {{#if name '===' (dashcase ../../name)}}
+                            <style>
+                            :root {
+                                --team-primary-colour: {{primary_brand_colour}};
+                            }
+                        </style>
+                    {{/if}}
+                {{/each}}
+
+                <section class="team-category">
+                    <div class="u-container team-category__header">
+                        <svg class="icon-teams-{{toLowerCase (dashcase ../category.name)}}" title="{{../category.name}}">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase ../category.name)}}"></use>
+                        </svg>
+                    </div>
+                </section>
+            {{/if}}
+        {{/or}}
+    {{/if}}
+{{/each}}
+
+<div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+    {{> goose/common/g-breadcrumbs breadcrumbs=breadcrumbs}}
+</div>
+
+<!-- Begin Filters -->
+{{!--  Reason why we using this approach is, as for categories, search results, brand pages we need to pass in different components --}}
+{{#partial "fb-content"}}
+    {{> components/products/filter sort=pagination.category.sort}}
+    {{!-- > components/category/sidebar --}}
+    {{> goose/category/g-category-filters }}
+{{/partial}}
+{{> goose/common/g-filter-block }}
+<!-- End Filters -->
+
+{{!-- {{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}} --}}
+
+<div class="page category-view u-container">
+
+    <div class="catgeory-view__header">
+        {{#unless theme_settings.hide_category_page_heading }}
+            <h1 class="heading">{{category.name}}</h1>
+            {{{region name="category_below_header"}}}
+        {{/unless}}
+    </div>
+
+    <div class="u-spacing-margin-bottom-12">
+        {{#if category.subcategories}}
+            {{> goose/category/g-category-sub-nav category=category.subcategories}}
+        {{else}}
+        {{!-- Here we display the sub categories of the team which are loaded adjacent to the shop all category
+            This caters for the "Shop All" pages, where we want to show the sub category options
+        --}}
+            {{#if category.name '===' 'Shop All'}}
+                {{#each (pluck breadcrumbs "name")}}
+                    {{#if @index '===' 1}}
+                        {{assignVar "league" this}}
+
+                        {{#each ../categories}}
+                            {{#if name '===' (getVar "league")}}
+                                {{#each (pluck ../../breadcrumbs "name")}}
+                                    {{#if @index '===' 2}}
+                                        {{assignVar "team" this}}
+                                        
+                                        {{#each ../this.children}}
+                                            {{#if this.name '===' (getVar "team")}}
+                                                {{#if this.children}}
+                                                    {{> goose/category/g-category-sub-nav category=this.children}}
+                                                {{/if}}
+                                            {{/if}}
+                                        {{/each}}
+                                    {{/if}}
+                                {{/each}}
+                            {{/if}}
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+            {{/if}}
+        {{/if}}
+    </div>
+
+    {{!-- {{#if category.faceted_search_enabled}}
+        <aside class="page-sidebar" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.subcategories}}
+        <aside class="page-sidebar" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.shop_by_price}}
+        {{#if theme_settings.shop_by_price_visibility}}
+             <aside class="page-sidebar" id="faceted-search-container">
+                {{> components/category/sidebar}}
+            </aside>
+        {{/if}}
+    {{/if}} --}}
+
+    <div class="" id="product-listing-container">
+        {{> goose/category/g-product-listing }}
+
+        {{{region name="category_below_content"}}}
+    </div>
+</div>
+
+<section class="team-home-section team-home-section--footer u-text-centre">
+    <div class="u-container">
+        <div class="team-home-section__header">
+            <h4 class="heading">{{category.name}}</h4>
+        </div>
+        <div class="team-home-section__content text-component">
+            {{{category.description}}}
+        </div>
+
+        {{> goose/common/g-club-rewards-block}}
+    </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}

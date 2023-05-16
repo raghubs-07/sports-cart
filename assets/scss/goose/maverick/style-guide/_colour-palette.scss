@@ -1,0 +1,111 @@
+.colour-palette {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: spacing-scale("4");
+}
+
+.palette__colour {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: spacing-scale("3");
+    color: g-colour("gray", "0");
+
+    // Gray
+    &--gray100 {
+        background: g-colour("gray", "100");
+    }
+
+    &--gray80 {
+        background: g-colour("gray", "80");
+    }
+
+    &--gray70 {
+        background: g-colour("gray", "70");
+    }
+
+    &--gray60 {
+        background: g-colour("gray", "60");
+    }
+
+    &--gray50 {
+        background: g-colour("gray", "50");
+    }
+
+    &--gray40 {
+        background: g-colour("gray", "40");
+    }
+
+    &--gray30 {
+        background: g-colour("gray", "30");
+    }
+
+    &--gray20 {
+        background: g-colour("gray", "20");
+    }
+
+    &--gray10 {
+        background: g-colour("gray", "10");
+    }
+
+    &--gray0 {
+        background: g-colour("gray", "0");
+    }
+
+    // Red
+
+    &--red60 {
+        background: g-colour("red", "60");
+    }
+
+    &--red50 {
+        background: g-colour("red", "50");
+    }
+
+    &--red40 {
+        background: g-colour("red", "40");
+    }
+
+    &--red30 {
+        background: g-colour("red", "30");
+    }
+
+    &--red20 {
+        background: g-colour("red", "20");
+    }
+
+    &--red10 {
+        background: g-colour("red", "10");
+    }
+
+    // Blue
+    &--blue20 {
+        background: g-colour("blue", "20");
+    }
+
+    &--blue10 {
+        background: g-colour("blue", "10");
+    }
+
+    // Green
+    &--green50 {
+        background: g-colour("green", "50");
+    }
+
+    &--green20 {
+        background: g-colour("green", "20");
+    }
+
+    &--green10 {
+        background: g-colour("green", "10");
+    }
+
+    // Yellow
+    &--yellow20 {
+        background: g-colour("yellow", "20");
+    }
+
+    &--yellow10 {
+        background: g-colour("yellow", "10");
+    }
+}

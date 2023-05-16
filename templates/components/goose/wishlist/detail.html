@@ -1,0 +1,5 @@
+{{#if wishlist.items}}
+    {{> goose/account/g-wishlist-item-list show_remove=wishlist.is_editable }}
+{{else}}
+    {{> components/common/alert/alert-generic (lang 'account.wishlists.empty_wishlist')}}
+{{/if}}

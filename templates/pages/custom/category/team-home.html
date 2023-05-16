@@ -1,0 +1,106 @@
+{{#partial "page"}}
+    {{#each theme_settings.teams}}
+        {{#if name '===' (toLowerCase (dashcase ../category.name))}}
+            <style>
+                :root {
+                    --team-primary-colour: {{primary_brand_colour}};
+                }
+            </style>
+        {{/if}}
+    {{/each}}
+
+    {{!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} --}}
+    <section class="g-page g-page--team-home team-home">
+        <div class="team-home__columns">
+            <div class="team-home__column team-home__teambrand">
+                <div class="teambrand">
+                    <div class="teambrand__logo">
+                        <svg class="icon-teams-{{toLowerCase (dashcase category.name)}}" title="{{category.name}}">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase category.name)}}"></use>
+                        </svg>
+                    </div>
+                    <div class="teambrand__team-name">
+                        <h2 class="heading">{{category.name}}</h2>
+                    </div>
+                </div>
+                <div class="scroll-arrow">
+                    <a href="#start">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-radial-arrow-down"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-home__column team-home__content" id="start">
+                {{!-- This is grabbing the string of html from the safestring object and then checking if it has a widget active in the region --}}
+                {{#if (occurrences (get "string" (getObject "string" (region name="page_builder_content"))) "data-widget-id=") '>' 0}}
+                    <div class="u-spacing-margin-bottom-8">
+                {{/if}}
+                    {{{region name="page_builder_content"}}}
+                {{#if (occurrences (get "string" (getObject "string" (region name="page_builder_content"))) "data-widget-id=") '>' 0}}
+                    </div>
+                {{/if}}
+                <div class="team-home__header u-spacing-margin-bottom-8">
+                    <h1 class="heading">{{category.name}} Merchandise</h1>
+                    <a href="{{#each category.subcategories}}{{#if name '===' 'Shop All'}}{{url}}{{/if}}{{/each}}" class="g-button g-button--icon g-button--icon-right g-button--primary">
+                        Shop All {{category.name}}          
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="team-home__products js-team-featured-products" data-category-url="{{#each category.subcategories}}{{#if name '===' 'Shop All'}}{{url}}{{/if}}{{/each}}?is_featured=1">
+                    <!--Products loaded via team-home.js-->
+                    {{> goose/placeholder/g-cat-placeholder-list count=4 }}
+                </div>
+
+                {{> goose/common/g-subcategory-carousel title="Shop By Category" categories=category.subcategories}}
+            </div>
+        </div>
+
+        <section class="team-home-section team-home-section--grey">
+            <div class="u-container">
+                <div class="team-home-section__header">
+                    <h3 class="heading">Best Selling Ladder</h3>
+                </div>
+
+                <div class="ladders">
+                   {{> goose/common/g-product-ladder name="Men" sorturl="?Age+Group=Men"}} 
+                   {{> goose/common/g-product-ladder name="Women" sorturl="?Age+Group=Women"}} 
+                   {{> goose/common/g-product-ladder name="Youth" sorturl="?Age+Group=Youth"}}                    
+                </div>
+            </div>
+        </section>
+
+        <section class="team-home-section team-home-section--footer u-text-centre">
+            <div class="u-container">
+                <div class="team-home-section__header">
+                    <h4 class="heading">{{category.name}}</h4>
+                </div>
+                <div class="team-home-section__content text-component">
+                    <p>{{{category.description}}}</p>
+                </div>
+
+                {{> goose/common/g-club-rewards-block}}
+            </div>
+        </section>
+        
+        {{!-- {{#unless theme_settings.hide_page_heading }}
+            <h1 class="page-heading">{{ page.title }}</h1>
+        {{/unless}} --}}
+
+
+       
+
+        {{!-- <div class="page-content page-content--centered">
+            <p>{{{page.content}}}</p>
+        </div> --}}
+
+        
+    </section>
+
+{{/partial}}
+
+{{> layout/base}}

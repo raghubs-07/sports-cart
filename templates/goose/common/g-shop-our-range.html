@@ -1,0 +1,28 @@
+<h2 class="shop-our-range__heading">Shop Footy Merchandise &amp; Gifts</h2>
+
+<div class="g-tabs-wrap js-g-tabs-wrap">
+    <ul class="g-tabs g-tabs--full-width js-g-tabs shop-our-range__buttons our-range-buttons" role="tablist">
+        {{#each categories}}
+            {{#if name '===' 'Shop All' }}
+                {{#each children}}
+                    <li class="our-range-buttons__item g-tabs__item" role="presentation">
+                        <button type="button" class="g-button g-tabs__link js-tabs-link our-range-button {{#if @index '===' 1}}g-tabs__link--active{{/if}}" id="{{toLowerCase (dashcase name)}}-tab" href="{{toLowerCase (dashcase name)}}" role="tab" aria-contorls="{{toLowerCase (dashcase name)}}" aria-selected="{{#if @index '===' 1}}true{{else}}false{{/if}}">{{name}}</button>
+                    </li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ul>
+
+
+    <div class="g-tabs__content js-my-tab-content">
+        {{#each categories}}
+            {{#if name '===' 'Shop All' }}
+                {{#each children}}
+                    <section class="js-tabs-pane js-shop-products g-tabs__pane {{#if @index '===' 1}}g-tabs__pane--active{{/if}}" id="{{toLowerCase (dashcase name)}}" data-category-url="{{url}}?sort=featured" role="tabpanel" aria-labelledby="{{toLowerCase (dashcase name)}}-tab" tabindex="{{#if @index '===' 0}}0 {{else}} -1 {{/if}}" {{#if @index '!=='    1}} hidden {{/if}}>
+                         <!--Products loaded via team-home.js-->
+                    </section>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

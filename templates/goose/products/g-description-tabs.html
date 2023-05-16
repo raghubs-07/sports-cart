@@ -1,0 +1,168 @@
+<article class="product-view-description">
+    <div class="g-tabs-wrap js-g-tabs-wrap">
+        <ul class="g-tabs g-tabs--full-width js-g-tabs" role="tablist">
+            <li class="g-tabs__item" role="presentation">
+                <button class="g-tabs__link js-tabs-link g-tabs__link--active" id="description-tab" href="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+            </li>
+            <li class="g-tabs__item" role="presentation">
+                <button class="g-tabs__link js-tabs-link" id="details-tab" href="#details" type="button" role="tab" aria-controls="details" aria-selected="false">Product Details</button>
+            </li>
+            {{#filter product.custom_fields "Size Chart" property="name"}}  
+                <li class="g-tabs__item" role="presentation">
+                    <button class="g-tabs__link js-tabs-link" id="sizeguide-tab" href="#sizeguide" type="button" role="tab" aria-controls="sizeguide" aria-selected="false">Size Guide</button>
+                </li>
+            {{/filter}}
+            <li class="g-tabs__item" role="presentation">
+                <button class="g-tabs__link js-tabs-link" id="shipping-tab" href="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping &amp; Returns</button>
+            </li>
+        </ul>
+        <div class="g-tabs__content js-my-tab-content">
+            <section class="g-tabs__pane g-tabs__pane--active js-tabs-pane" id="description" role="tabpanel" aria-labelledby="description-tab" tabindex="0">
+                {{#if product.description}}
+                    {{{product.description}}}
+                {{else}}
+                    Description Coming Soon.
+                {{/if}}
+            </section>
+            <section class="g-tabs__pane g-tabs__pane js-tabs-pane" id="details" role="tabpanel" aria-labelledby="details-tab" tabindex="-1" hidden>
+                <dl class="productView-info">
+                    <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+                    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+                    <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+                    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+    
+                    {{!-- {{#if product.condition}}
+                        <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                        <dd class="productView-info-value">{{product.condition}}</dd>
+                    {{/if}} --}}
+    
+                    {{#if product.availability}}
+                        <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+                        <dd class="productView-info-value">{{product.availability}}</dd>
+                    {{/if}} 
+    
+                    {{#all product.weight theme_settings.show_product_weight}}
+                        <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                        <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                    {{/all}}
+    
+                    {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+                        <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+                        <dd class="productView-info-value" data-product-width>
+                            {{product.width}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                        <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+                        <dd class="productView-info-value" data-product-height>
+                            {{product.height}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                        <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+                        <dd class="productView-info-value" data-product-depth>
+                            {{product.depth}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                    {{/all}}
+    
+                    {{#if product.min_purchase_quantity}}
+                        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+                    {{/if}}
+    
+                    {{#if product.max_purchase_quantity}}
+                        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+                    {{/if}}
+    
+                    {{!-- {{#if product.gift_wrapping_available}}
+                        <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+                    {{/if}} --}}
+    
+                    {{#if product.shipping}}
+                        {{#if product.shipping.calculated}}
+                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                            <dd class="productView-info-value">{{lang 'products .shipping_calculated'}}</dd>
+                        {{else}}
+                            {{#if product.shipping.price.value '===' 0}}
+                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                            {{else}}
+                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+    
+                    {{#if settings.bulk_discount_enabled}}
+                        {{#if (length product.bulk_discount_rates) '>' 0}}
+                            <div class="productView-info-bulkPricing">
+                                {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                            </div>
+                        {{/if}}
+                    {{/if}}
+    
+                    {{#if theme_settings.show_custom_fields_tabs '!==' true}}
+                        {{> components/products/custom-fields }}
+                    {{/if}}
+                </dl>
+            </section>
+
+            {{#filter product.custom_fields "Size Chart" property="name"}}  
+                <section class="g-tabs__pane g-tabs__pane js-tabs-pane" id="sizeguide" role="tabpanel" aria-labelledby="sizeguide-tab" tabindex="-1" hidden> 
+                    <div class="size-chart">
+
+                        <div class="size-chart__details">
+                            <p><strong>Get the perfect fit by using your body measurements &amp; following the detailed Market Sports Fit &amp; Size Guide. </strong></p>
+                        
+                            <br />
+                            {{#filter product.custom_fields "Size Hint" property="name"}}  
+                                {{> goose/common/g-cf-size-hint value=value}}
+                            {{/filter}} 
+
+                            <br /><br />
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-guide"></use>
+                            </svg>
+                        </div>
+
+                        
+                            <div class="size-chart__chart js-size-chart-container" data-size-chart="{{value}}">
+                                {{!-- content loaded from g-size-chart.js --}}
+                            </div>
+                    
+                    </div>
+                </section>
+            {{/filter}}
+
+            <section class="g-tabs__pane g-tabs__pane js-tabs-pane text-component" id="shipping" role="tabpanel" aria-labelledby="shipping-tab" tabindex="-1" hidden>
+                <p><strong>Same Day Dispatch:</strong> We strive to get your order processed and shipped out as soon as possible. All orders placed before 3pm Brisbane time will be dispatched on the same day. Orders placed after 3pm will be dispatched the following business day.</p>
+                <p><strong>Flat Rate Shipping:</strong>  $9.95 Standard Shipping. Express Shipping $13.95.</p>
+
+                <p><strong>Freight Carriers:</strong>  For standard shipping, we use Australia Post and Couriers Please for some metro areas. All Express Shipping will use Australia Post Expres Parcel service. </p>
+
+                <p><strong>Free Shipping:</strong>  We offer free standard shipping on all Australian orders over $125. This offer is automatically applied at checkout and does not require any promo codes or coupons. Free shipping is only available for orders shipped within Australia.</p>
+
+                <p><strong>Delivery Times:</strong>  The delivery times may vary depending on the shipping option selected, the delivery location, and any unforeseen circumstances such as weather delays or public holidays. Please allow for additional delivery time during peak holiday seasons.</p>
+
+                <p><strong>Order Tracking:</strong>  We provide order tracking for all orders shipped with our Standard and Express shipping options. You will receive a shipping confirmation email with a tracking number once your order has been dispatched.</p>
+
+                <p><strong>International Shipping:</strong>  We ship internationally!</p>
+
+                <p>If you have any questions or concerns about our shipping policy, please do not hesitate to contact us. We are always happy to assist you</p>
+            </section>
+        </div>
+    </div>
+</article>

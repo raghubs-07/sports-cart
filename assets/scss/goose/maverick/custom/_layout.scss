@@ -1,0 +1,23 @@
+// =============================================================================
+// CONTAINER (Settings)
+// =============================================================================
+
+:root {
+    --container-gutter: #{spacing-scale("4")};
+    --container-max-width: calc(#{remCalc(1520px)} + (#{var(--container-gutter)} * 2));
+}
+
+$goose--zindex: (
+    "dropdown": var(--zindex-dropdown),
+    "sticky": var(--zindex-sticky),
+    "fixed": var(--zindex-fixed),
+    "model-backdrop": var(--zindex-modal-backdrop),
+    "offcanvas": var(--zindex-offcanvas),
+    "model": var(--zindex-model),
+    "popover": var(--zindex-popover),
+    "tooltip": var(--zindex-tooltip),
+);
+
+.page-content--empty {
+    @include center-placed;
+}

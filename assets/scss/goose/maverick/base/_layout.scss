@@ -1,0 +1,44 @@
+// =============================================================================
+// Container (CSS)
+// =============================================================================
+
+:root {
+    --grid-columns: 48;
+    --grid-column-gap: 0px;
+    --grid-side-margin: 6rem;
+    --scrollbar-width: 0px;
+    --container-max-width: 1520px;
+    --grid-max-width: var(--container-max-width);
+    --grid-width-input: calc(100vw - var(--scrollbar-width) - var(--grid-side-margin) * 2);
+    --grid-width: Min(var(--grid-width-input), var(--grid-max-width));
+    --grid-column-width: calc((var(--grid-width) - (var(--grid-columns) - 1) * var(--grid-column-gap)) / var(--grid-columns));
+    --container-gutter: var(--space-3);
+}
+
+@mixin u-container($padding: "false") {
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    position: relative;
+
+    @if $padding == "true" {
+        padding-right: var(--container-gutter);
+        padding-left: var(--container-gutter);
+    }
+}
+
+// =============================================================================
+// Z-index
+// =============================================================================
+
+:root {
+    --zindex-dropdown: 1000;
+    --zindex-sticky: 1020;
+    --zindex-fixed: 1030;
+    --zindex-modal-backdrop: 1040;
+    --zindex-offcanvas: 1050;
+    --zindex-modal: 1060;
+    --zindex-popover: 1070;
+    --zindex-tooltip: 1080;
+}

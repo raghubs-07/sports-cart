@@ -1,0 +1,19 @@
+.secure-payments {
+    text-align: center;
+
+    &__info {
+        margin-bottom: spacing-scale("2");
+    }
+
+    &__methods {
+        display: flex;
+    }
+    
+    &__method {
+        margin: 0 spacing-scale("2");
+
+        svg {
+            height: 48px;
+        }
+    }
+}

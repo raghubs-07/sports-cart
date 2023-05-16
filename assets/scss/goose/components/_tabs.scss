@@ -1,0 +1,51 @@
+.g-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
+    background: g-colour("gray", "10");
+
+    &--full-width {
+        .g-tabs__item {
+            flex: 1;
+        }
+
+        .g-tabs__link {
+            white-space: nowrap;
+            width: 100%;
+            border-radius: 0;
+        }
+    }
+
+    &__link {
+        display: block;
+        font-size: var(--text-preset-3);
+        padding: spacing-scale("3") spacing-scale("8");
+        color: g-colour("gray", "50");
+        text-decoration: none;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+        // &--active {
+        //     background: g-colour("gray", "0");
+        //     color: g-colour("red", "60");
+        //     border-bottom: remCalc(3px) solid g-colour("red", "40");
+        // }
+
+        &[aria-selected="true"] {
+            background: g-colour("gray", "0");
+            color: g-colour("red", "60");
+            border-bottom: remCalc(3px) solid g-colour("red", "40");
+        }
+
+        // TO DO: consider better styles for focus statte
+        &:focus-visible {
+            background: g-colour("gray", "0");
+            outline: 0.2em solid transparent;
+        }
+    }
+}
+
+.g-tabsitem {
+    &--full-width {
+    }
+}

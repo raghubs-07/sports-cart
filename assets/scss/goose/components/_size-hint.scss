@@ -1,0 +1,18 @@
+.size-hint {
+    font-size: var(--text-preset-3);
+    font-style: italic;
+    color: g-colour("gray", "50");
+
+    dl {
+        display: flex;
+
+        dt {
+            margin-right: spacing-scale("1");
+            margin-bottom: 0;
+        }
+
+        dd {
+            margin-bottom: 0;
+        }
+    }
+}

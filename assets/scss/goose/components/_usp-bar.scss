@@ -1,0 +1,35 @@
+.usp-bar {
+    padding: spacing-scale("02") 0;
+}
+
+.usp-messages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__message {
+        color: g-colour("gray", "50");
+        text-transform: uppercase;
+        position: relative;
+        padding: spacing-scale("3") spacing-scale("8");
+        font-size: var(--text-preset-3);
+        letter-spacing: var(--letter-spacing-4);
+
+        &:after {
+            content: "";
+            width: 0.5px;
+            background: g-colour("gray", "50");
+            height: spacing-scale("3");
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &:last-child {
+            &::after {
+                content: none;
+            }
+        }
+    }
+}

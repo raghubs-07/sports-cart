@@ -1,0 +1,38 @@
+// =============================================================================
+// LAYOUT SPACING
+// =============================================================================
+
+// Spacing scale
+// -----------------------------------------------------------------------------
+
+// :root, * {
+//     --space-1: calc(#{strip-unit(remCalc(2))}); //2px / 0.125
+//     --space-2: calc(#{strip-unit(remCalc(4))}); //4px / 0.25
+//     --space-3: calc(#{strip-unit(remCalc(8))}); //8px / 0.5
+//     --space-4: calc(#{strip-unit(remCalc(12))}); //12px / 0.75
+//     --space-5: calc(#{strip-unit(remCalc(16))}); //16 / 1
+//     --space-6: calc(var(--space-5) + var(--spacing-base-unit) ); //24 / 1.5
+//     --space-7: calc(var(--space-6) + var(--spacing-base-unit) ); //32 / 2
+//     --space-8: calc(var(--space-7) + var(--spacing-base-unit)); //40 / 2.5
+//     --space-9: calc(var(--space-8) + var(--spacing-base-unit) ); //48 / 3
+//     --space-10: calc(var(--space-9) + var(--spacing-base-unit) ); //56 / 3.5
+//     --space-11: calc(var(--space-10) + var(--spacing-base-unit)); //64 / 4
+//     --space-12: calc(var(--space-11) + var(--spacing-base-unit)); //72 / 4.5
+// }
+
+// @include breakpoint(md) {
+//     :root, * {
+//         --space-1: calc(#{strip-unit(remCalc(2))}); //2px / 0.125
+//         --space-2: calc(#{strip-unit(remCalc(4))}); //4px / 0.25
+//         --space-3: calc(#{strip-unit(remCalc(8))}); //8px / 0.5
+//         --space-4: calc(#{strip-unit(remCalc(12))}); //12px / 0.75
+//         --space-5: calc(#{strip-unit(remCalc(16))}); //16 / 1
+//         --space-6: calc(var(--space-5) + var(--spacing-base-unit) ); //24 / 1.5
+//         --space-7: calc(var(--space-6) + var(--spacing-base-unit) ); //32 / 2
+//         --space-8: calc(var(--space-7) + var(--spacing-base-unit)); //40 / 2.5
+//         --space-9: calc(var(--space-8) + var(--spacing-base-unit) ); //48 / 3
+//         --space-10: calc(var(--space-9) + var(--spacing-base-unit) ); //56 / 3.5
+//         --space-11: calc(var(--space-10) + var(--spacing-base-unit)); //64 / 4
+//         --space-12: calc(var(--space-11) + var(--spacing-base-unit)); //72 / 4.5
+//     }
+// }

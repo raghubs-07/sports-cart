@@ -1,0 +1,117 @@
+<ul class="cart-totals">
+    <li class="mc__footer__subtotal">
+        <div class="cart-total-label">
+            <strong>{{lang 'cart.checkout.subtotal'}}:</strong>
+        </div>
+        <div class="cart-total-value">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                <span>{{cart.sub_total.formatted}}</span>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </li>
+    {{#if cart.gift_wrapping_cost.value}}
+        <li class="cart-total">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.checkout.gift_wrapping'}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                <span>{{cart.gift_wrapping_cost.formatted}}</span>
+            </div>
+        </li>
+    {{/if}}
+    {{#each cart.taxes}}
+        {{#unless included}}
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    <strong>{{name}}:</strong>
+                </div>
+                <div class="cart-total-value">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </li>
+        {{/unless}}
+    {{/each}}
+    {{#if cart.discount }}
+        <li class="cart-total">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.discount'}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                {{cart.discount.formatted}}
+            </div>
+        </li>
+    {{/if}}
+
+    {{!--#if settings.gift_certificates_enabled}}
+        {{#each cart.gift_certificates}}
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    <strong>{{lang 'cart.gift_certificates.code_label' code=code}}</strong>
+                    <span>
+                        {{remaining.formatted}} | <a href="{{remove_url}}">{{lang 'cart.gift_certificates.remove'}}</a>
+                    </span>
+                </div>
+                <div class="cart-total-value">
+                    {{used.formatted}}
+                </div>
+            </li>
+        {{/each}}
+        <li class="cart-total">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.gift_certificates.gift_certificate'}}:</strong>
+            </div>
+            {{> components/cart/gift-certificate-input}}
+        </li>
+    {{/if--}}
+    {{#each cart.taxes}}
+        {{#if included}}
+            <li class="mc__footer__tax cart-total">
+                <div class="cart-total-label">
+                    <strong>{{concat name (lang 'cart.included_in_total')}}:</strong>
+                </div>
+                <div class="cart-total-value">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </li>
+        {{/if}}
+    {{/each}}
+</ul>
+
+<div class="previewCartAction">
+    {{#if cart.additional_checkout_buttons}}
+        <div data-cart-accelerated-checkout-buttons class="previewCart-acceleratedCheckoutButtons"></div>
+    {{/if}}
+
+
+    {{#if cart.show_primary_checkout_button}}
+        <div class="previewCartAction-checkout">
+            <a
+                    href="{{urls.checkout.single_address}}"
+                    class="g-button g-button--fullbleed g-button--lg g-button--primary"
+                    data-primary-checkout-now-action
+            >
+                CHECK OUT
+            </a>
+        </div>
+    {{/if}}
+
+    {{#if cart.show_multiple_address_shipping}}
+        <div class="previewCartAction-checkoutMultiple">
+            <a href="{{urls.checkout.multiple_address}}">
+                {{lang 'cart.preview.checkout_multiple'}}
+            </a>
+        </div>
+    {{/if}}
+</div>
+{{!-- #if cart.additional_checkout_buttons}}
+    <div class="previewCart-additionalCheckoutButtons">
+        {{#each cart.additional_checkout_buttons}}
+            {{{this}}}
+        {{/each}}
+    </div>
+{{/if --}}
+<div class="mc__footer__notice">
+    Shipping, taxes, and discounts  calculated at checkout
+</div>

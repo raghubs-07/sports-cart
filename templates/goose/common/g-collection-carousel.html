@@ -1,0 +1,57 @@
+{{#each categories}}
+    {{#if name '===' 'Collections'}}
+        <section class="collection-carousel home-section  swiper" data-g-swiper='{
+            "slidesPerView": 1,
+            "spaceBetween": 16,
+            "breakpoints": {
+                "481": {
+                    "slidesPerView": 2
+                },
+                "769": {
+                    "slidesPerView": 3,
+                    "spaceBetween": 40
+                }
+            },
+            "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+            },
+            "scrollbar": {
+            "el": ".swiper-scrollbar",
+            "draggable": true
+            }}'>
+
+                <div class="collection-carousel__header home-section__header">
+                    <h2 class="collection-carousel__title home-section__heading">
+                        {{name}}
+                    </h2>
+                    <!-- Navigation -->
+                    <div class="collection-carousel__navigation home-section__navigation">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+
+                <figure class="collection-carousel__container swiper-wrapper">
+                    {{#each children}}
+                        <a class="collection-carousel__item swiper-slide" href="{{url}}">
+                            <div class="collection-carousel__item__image-wrapper">
+                                {{> components/common/responsive-img
+                                image=image
+                                class="collection-carousel__item__image"
+                                fallback_size='1280w'
+                                lazyload='disabled'
+                                default_image=../../theme_settings.default_image_product
+                                }}
+                            </div>
+                            <figcaption class="collection-carousel__item__title">
+                                {{name}}
+                            </figcaption>
+                        </a>
+                    {{/each}}
+                </figure>
+                <!-- Scrollbar -->
+                <div class="swiper-scrollbar"></div>
+        </section>
+    {{/if}}
+{{/each}}

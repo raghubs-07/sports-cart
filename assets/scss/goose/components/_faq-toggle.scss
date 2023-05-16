@@ -1,0 +1,47 @@
+.faq-toggle {
+    margin-bottom: spacing-scale("5");
+    &__button {
+        display: flex;
+        align-items: center;
+        padding: spacing-scale("3");
+        background: g-colour("gray", "10");
+
+        &:hover {
+            cursor: pointer;
+            background: g-colour("gray", "20");
+        }
+
+        .faq-icon {
+            margin-right: spacing-scale("3");
+            line-height: 0;
+            svg {
+                width: remCalc(18px);
+                height: remCalc(18px);
+            }
+        }
+
+        .text {
+        }
+
+        .toggle-icon {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+
+            svg {
+                width: remCalc(24px);
+                height: remCalc(24px);
+            }
+        }
+    }
+
+    &.is-open {
+        .product-view__faq {
+            display: block;
+        }
+
+        .toggle-icon {
+            transform: rotate(90deg);
+        }
+    }
+}

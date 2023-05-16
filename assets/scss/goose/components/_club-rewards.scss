@@ -1,0 +1,51 @@
+.club-rewards-block {
+    background: g-colour("gray", "60");
+    padding: spacing-scale("10");
+    grid-column: span 48 / auto;
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        grid-column: span 48 / auto;
+        text-align: center;
+
+        @include breakpoint("small") {
+            grid-column-start: 5;
+            grid-column-end: 44;
+            justify-content: space-between;
+        }
+
+        @include breakpoint("medium") {
+            grid-column-start: 8;
+            grid-column-end: 42;
+        }
+
+        button {
+            padding-left: calc(#{spacing-scale("12")} * 2);
+            padding-right: calc(#{spacing-scale("12")} * 2);
+        }
+    }
+
+    &__logo {
+        margin-right: spacing-scale("4");
+        margin-bottom: spacing-scale("4");
+
+        @include breakpoint("small") {
+            margin-bottom: 0;
+        }
+
+        svg {
+            max-height: remCalc(62px);
+        }
+    }
+}
+
+// Club bubble launcher
+
+body.club-hidden {
+    .stamped-launcher-button {
+        display: none;
+    }
+}

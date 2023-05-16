@@ -1,0 +1,139 @@
+<section class="main-nav-drawer js-main-nav-drawer">
+    <div class="main-nav-wrap">
+        <div class="main-nav-header">
+            <div class="main-nav-header__logo">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use>
+                </svg>
+            </div>
+            <div class="main-nav-header__close js-mob-main-nav-close">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="main-nav">
+            {{> goose/common/g-primary-nav-list}}
+            {{> goose/common/g-secondary-nav-list}}
+        </div>
+
+        <div class="children-nav">
+            <nav class="primary-nav-children">
+                {{#each categories}}
+                    {{#if name '!==' 'Shop All'}}
+                        <div class="primary-nav-children__item" data-subnav-nav="{{toLowerCase (dashcase name)}}">
+                            <div class="primary-nav-children__wrap">
+                                <div class="primary-nav-children__header">
+                                    <i class="icon js-mob-child-nav-back">     
+                                        <svg>
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-left"></use>
+                                        </svg>
+                                    </i>
+                                    <h3 class="heading"><strong>{{name}}</strong></h3>
+                                </div>
+                                {{#if children}}
+                                    <ul class="list"> 
+                                        {{#each children}}
+                                            <li class="list-item">
+                                                <a href="{{url}}">
+                                                    <div class="primary-nav-children__img">     
+                                                        <span class="img-radius-wrap">
+                                                            <svg class="icon-teams-{{toLowerCase (dashcase name)}}" title="{{name}}">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase name)}}"></use>
+                                                            </svg>
+
+                                                            <svg class="icon-teams-{{toLowerCase (dashcase name)}}-placeholder" style="display: none;" title="{{name}}">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-placeholder"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="primary-nav-children__text">{{name}}</div>
+
+                                                    {{#if children}}
+                                                        <i class="primary-nav-children__icon">     
+                                                            <svg>
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-right"></use>
+                                                            </svg>
+                                                        </i>
+                                                    {{/if}}
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+                
+                {{#each categories}}
+                    {{#if name '===' 'Shop All'}}
+                        <div class="primary-nav-children__item" data-subnav-nav="{{toLowerCase (dashcase name)}}">
+                            <div class="primary-nav-children__wrap">
+                                <div class="primary-nav-children__header">
+                                    <i class="icon js-mob-child-nav-back">     
+                                        <svg>
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-left"></use>
+                                        </svg>
+                                    </i>
+                                    <h3 class="heading"><strong>{{name}}</strong></h3>
+                                </div>
+                                {{#if children}}
+                                    <ul class="list">
+                                        {{#each children}}
+                                            <li class="list-item">
+                                                <a href="{{url}}">
+                                                    <div class="primary-nav-children__img">     
+                                                        <span class="img-radius-wrap">
+                                                            <svg title="{{name}}">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase name)}}"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <div class="primary-nav-children__text">{{name}}</div>
+
+                                                    {{#if children}}
+                                                        <i class="primary-nav-children__icon">     
+                                                            <svg>
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-right"></use>
+                                                            </svg>
+                                                        </i>
+                                                    {{/if}}
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+                <!--nav panel-->
+                <div class="primary-nav-children__panel"></div>
+            </nav>
+        </div>
+
+
+        <div class="main-nav-image-panel is-open">
+            <img data-image-panel-img="default" class="main-nav-image-panel__img is-visible" src="{{cdn 'img/menu-panel-images/default.jpg'}}" alt="AFL and NRL Clothing" title="Shop AFL & NRL">
+            <img data-image-panel-img="afl-store" class="main-nav-image-panel__img" src="{{cdn 'img/menu-panel-images/afl-store.jpg'}}" alt="AFL Store" title="AFL Store">
+            <img data-image-panel-img="nrl-shop" class="main-nav-image-panel__img" src="{{cdn 'img/menu-panel-images/nrl-shop.jpg'}}" alt="NRL Shop" title="NRL Shop">
+            <div class="main-nav-image-panel__content-wrap">
+                <div class="main-nav-image-panel__content">
+                    <h2 class="heading">Australias Premier <br /> AFL & NRL Merchandise Store</h2>
+
+                    <a href="/shop-all/" role="button" class="g-button g-button--primary g-button--lg">Shop Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-menu-close js-main-menu-close">
+            <i class="main-menu-close__icon">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+                </svg>
+            </i>
+        </div>
+    </div>
+</section>

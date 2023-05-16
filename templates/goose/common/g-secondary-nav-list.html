@@ -1,0 +1,105 @@
+<div class="secondary-nav-wrap">
+    <nav class="secondary-nav">
+        <ul class="list">
+            {{#unless customer}}
+            <li class="list__item">
+                <a href="{{urls.auth.login}}">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sign-in"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Sign in
+                    </div>
+                </a>
+            </li>
+            <li class="list__item">
+                <a href="{{urls.auth.create_account}}">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-register"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Register
+                    </div>
+                </a>
+            </li>
+            {{else}}
+            <li class="list__item">
+                <a href="{{urls.account.index}}">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-register"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        My Account
+                    </div>
+                </a>
+            </li>
+            <li class="list__item">
+                <a href="{{urls.auth.logout}}">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sign-in"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Sign Out
+                    </div>
+                </a>
+            </li>
+            {{/unless}}
+            <li class="list__item">
+                <a href="/market-sports-club-rewards">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-club"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Club
+                    </div>
+                </a>
+            </li>
+            <li class="list__item">
+                <a href="/shipping-returns">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-shipping"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Shipping
+                    </div>
+                </a>
+            </li>
+            <li class="list__item">
+                <a href="/about-us">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-ms-icon"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        About Us
+                    </div>
+                </a>
+            </li>
+            <li class="list__item">
+                <a href="/contact-us">
+                    <i class="list__item__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-call"></use>
+                        </svg>
+                    </i>
+                    <div class="list__item__text">
+                        Contact Us
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

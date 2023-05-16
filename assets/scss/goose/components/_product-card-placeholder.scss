@@ -1,0 +1,42 @@
+@mixin animatedBg {
+    animation-name: placeholderAnimate;
+    animation-duration: 1.7s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    background:  g-colour("gray", "20");
+    background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
+    background-size: 1300px;
+}
+
+.card--placeholder {
+    .card-figure {
+        height: 0;
+        padding-top: 100%;
+        @include animatedBg()
+    }
+
+    .card-title {
+        display: block;
+        height: remCalc(20px);
+        width: 50%;
+        @include animatedBg();
+    }
+
+    .price-section {
+        display: block;
+        height: remCalc(20px);
+        width: 100px;
+        @include animatedBg();
+    }
+    
+}
+
+@keyframes placeholderAnimate {
+    0% {
+        background-position: -650px 0;
+    }
+
+    100% {
+        background-position: 650px 0;
+    }
+}

@@ -1,0 +1,117 @@
+.g-header {
+    padding-top: spacing-scale("4");
+    padding-bottom: spacing-scale("4");
+    background-color: g-colour("gray", "0");
+    position: relative;
+
+    .search-results--active & {
+        z-index: 101;
+    }
+
+    &__container {
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        // @include u-container("true");
+        padding: 0 3.3333333333vw;
+    }
+
+    &__logo {
+        flex: 1 1 0%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        order: 1;
+
+        .logo {
+            line-height: 0;
+
+            a {
+                display: block;
+            }
+
+            svg {
+                max-width: remCalc(115px);
+                max-height: remCalc(32px);
+
+                @include breakpoint("medium") {
+                    max-width: remCalc(144px);
+                    max-height: remCalc(40px);
+                }
+            }
+        }
+    }
+
+    &__search {
+        display: none;
+        order: 4;
+        overflow: hidden;
+        width: 100%;
+        margin-top: spacing-scale("4");
+
+        .search--active & {
+            display: block;
+        }
+
+        @include breakpoint("medium") {
+            display: block;
+            order: 2;
+            width: auto;
+            margin-top: 0;
+        }
+    }
+
+    &__utility {
+        flex: 1 1 0%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        order: 3;
+    }
+
+    &__searchResults {
+        display: none;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        height: 100%;
+        background-color: g-colour("gray", "0");
+
+        .search-results--active & {
+            display: flex;
+            z-index: 101;
+        }
+
+        @include breakpoint("medium") {
+            height: fit-content;
+        }
+    }
+
+    .nav-trigger {
+        display: flex;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        margin-right: spacing-scale("3");
+        cursor: pointer;
+
+        @include breakpoint("medium") {
+            margin-right: spacing-scale("9");
+        }
+
+        svg {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__usp-bar {
+        display: none;
+
+        @include breakpoint("medium") {
+            display: block;
+            padding: spacing-scale("02") 0;
+            background: g-colour("gray", "10");
+        }
+    }
+}

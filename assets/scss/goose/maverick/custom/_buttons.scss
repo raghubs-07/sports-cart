@@ -1,0 +1,241 @@
+// --------------------------------
+
+// Custom Button Styles
+
+// --------------------------------
+
+// I have use a g- prefix to avoid clashing styles with BigCommerce
+
+:root {
+    --btn-font-size: #{var(--text-preset-4)};
+    --btn-font-size-sm: #{var(--text-preset-3)};
+    --btn-font-size-lg: #{var(--text-preset-4)};
+    --btn-padding-x: #{spacing-scale("8")};
+    --btn-padding-y: #{spacing-scale("2")};
+    --btn-padding-lg-x: #{spacing-scale("11")};
+    --btn-padding-lg-y: #{spacing-scale("3")};
+    --btn-padding-md-x: #{spacing-scale("11")};
+    --btn-padding-md-y: #{spacing-scale("3")};
+    --btn-padding-sm-x: #{spacing-scale("11")};
+    --btn-padding-sm-y: #{spacing-scale("2")};
+    --btn-radius: 3px;
+    --btn-case: none;
+    --btn-weight: 700;
+    --btn-letter-spacing: #{g-letter-spacing("04")};
+}
+
+.g-button {
+    min-height: remCalc(40px);
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    @include fontSmooth;
+    // transition: all 0.2s ease;
+    // will-change: transform;
+
+    &--lg {
+        font-size: var(--btn-font-size);
+        padding: calc(#{var(--btn-padding-lg-y)}) var(--btn-padding-lg-x);
+    }
+
+    &--md {
+        padding: calc(#{var(--btn-padding-md-y)}) var(--btn-padding-md-x);
+    }
+
+    &--sm {
+        font-size: var(--btn-font-size-sm);
+        padding: calc(#{var(--btn-padding-sm-y)}) var(--btn-padding-sm-x);
+
+        &.g-button--icon svg {
+            width: remCalc(24px);
+            height: remCalc(24px);
+        }
+    }
+
+    &--icon {
+        display: inline-flex;
+        align-items: center;
+        padding-left: calc(#{var(--btn-padding-y)} * 3);
+    }
+
+    &--icon-right {
+        padding-right: calc(#{var(--btn-padding-y)} * 3);
+
+        svg {
+            margin-left: spacing-scale("3");
+        }
+    }
+
+    &--icon-left {
+        padding-left: calc(#{var(--btn-padding-y)} * 3);
+
+        svg {
+            margin-right: spacing-scale("3");
+        }
+    }
+
+    &--no-padding {
+        padding: 0;
+    }
+}
+
+// themes
+.g-button--primary {
+    // background: var(--team-primary-colour, g-colour("gray", "80"));
+    background: g-colour("gray", "80");
+    color: g-colour("gray", "0");
+    border: none;
+    justify-content: center;
+
+    &:hover {
+        background: g-colour("red", "40");
+        border: none;
+        color: g-colour("gray", "0");
+    }
+
+    &:focus-visible,
+    .focus {
+        background: g-colour("gray", "40");
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none !important;
+        background: g-colour("gray", "80");
+        color: g-colour("gray", "0");
+    }
+
+    &:active {
+        border: none;
+        background: g-colour("gray", "40");
+    }
+
+    svg {
+        fill: g-colour("gray", "0");
+        stroke: g-colour("gray", "0");
+    }
+}
+
+.g-button--secondary {
+    background: g-colour("gray", "0");
+    color: g-colour("gray", "80");
+    border: 1px solid g-colour("gray", "30");
+    justify-content: center;
+
+    &:hover {
+        background: g-colour("gray", "50");
+        color: g-colour("gray", "0");
+        border: 1px solid g-colour("gray", "60");
+
+        svg {
+            fill: g-colour("gray", "0");
+        }
+    }
+
+    &:focus-visible,
+    .focus {
+        background: g-colour("gray", "40");
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none !important;
+    }
+
+    &:active {
+        background: g-colour("gray", "40");
+        color: g-colour("gray", "0");
+        border-color: g-colour("gray", "40");
+    }
+
+    &:disabled {
+        background: g-colour("gray", "0");
+        border-color: g-colour("gray", "10");
+        color: g-colour("gray", "0");
+    }
+}
+
+.g-button--outline {
+    background: none;
+    color: g-colour("gray", "80");
+    border: 1px solid g-colour("gray", "30");
+
+    &:hover {
+        border: 1px solid g-colour("gray", "60");
+    }
+
+    &:focus-visible,
+    .focus {
+        border: 1px solid g-colour("gray", "60");
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none !important;
+    }
+
+    &:active {
+        background: g-colour("gray", "40");
+        color: g-colour("gray", "0");
+        border: 1px solid g-colour("gray", "60");
+    }
+
+    &:disabled {
+        background: g-colour("gray", "0");
+        border-color: g-colour("gray", "10");
+        color: g-colour("gray", "0");
+    }
+
+    &-inverse {
+        color: g-colour("gray", "0");
+        border: 1px solid g-colour("gray", "0");
+    }
+}
+
+.g-button--ghost {
+    background: none;
+    color: g-colour("gray", "80");
+
+    &:hover {
+    }
+
+    &:focus-visible,
+    .focus {
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none !important;
+    }
+
+    &:active {
+        color: g-colour("gray", "0");
+    }
+
+    &:disabled {
+        color: g-colour("gray", "0");
+    }
+}
+
+// feedback
+.g-button--disabled,
+.g-button[disabled],
+.g-button[readonly] {
+    background: g-colour("gray", "30");
+    cursor: not-allowed;
+    border: none;
+}
+
+.g-button--fullbleed {
+    width: 100%;
+}
+
+// Icon Button
+.g-button--icon {
+    align-items: center;
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    svg {
+        width: remCalc(28px);
+        height: remCalc(28px);
+    }
+}

@@ -1,0 +1,13 @@
+{{#partial "page"}}
+{{#if settings.show_wishlist}}
+    <div class="u-container breadcrumbs-block u-container  u-spacing-margin-top-5">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="account account--fixedLarge u-spacing-margin-bottom-8">
+        <h2 class="page-heading">{{lang 'account.wishlists.heading' }}</h2>
+        {{> components/account/navigation account_page='wishlists'}}
+        {{> components/account/wishlist-list}}
+    </div>
+{{/if}}
+{{/partial}}
+{{> layout/base}}

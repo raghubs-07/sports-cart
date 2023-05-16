@@ -1,0 +1,15 @@
+<article class="card card--placeholder">
+    <div class="card-figure"></div>
+    <div class="card-body">
+        <h3 class="card-title">
+            <a aria-label="{{> components/products/product-info}}"
+               href="{{url}}"
+               {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}
+            >
+            </a>
+        </h3>
+        <div class="card-text" data-test-info-type="price">
+            <div class="price-section"></div>
+        </div>
+    </div>
+</article>

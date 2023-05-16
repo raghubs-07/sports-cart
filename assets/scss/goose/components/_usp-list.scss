@@ -1,0 +1,24 @@
+.usp-list {
+    &__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: spacing-scale("2");
+        font-size: var(--text-preset-3);
+        font-weight: g-font-weight("bold");
+
+        p {
+            font-weight: g-font-weight("bold");
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    svg {
+        margin-right: spacing-scale("2");
+        width: remCalc(32px);
+        height: remCalc(32px);
+        line-height: 0;
+    }
+}

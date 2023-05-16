@@ -1,0 +1,40 @@
+.newsletter-form {
+    position: relative;
+
+    // Title
+
+    &__title {
+        font-size: var(--text-preset-4);
+        margin-bottom: spacing-scale("4");
+        color: g-colour("gray", "0");
+    }
+
+    &__form {
+        margin-bottom: 0;
+    }
+
+    .form-prefixPostfix.wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    // Form
+    .form-field {
+        margin-bottom: 0;
+    }
+
+    // Status Message
+    &__message {
+        font-size: var(--text-preset-3);
+        width: 100%;
+        position: absolute;
+    }
+}
+
+// Animation
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

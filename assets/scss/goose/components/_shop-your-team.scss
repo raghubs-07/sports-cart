@@ -1,0 +1,182 @@
+// Variables
+$shop-mobile-count: 3;
+$shop-tablet-count: 6;
+$shop-desktop-count: 8;
+$shop-item-width: 96px;
+$shop-item-gap--mobile: spacing-scale("4");
+$shop-item-gap--desktop: spacing-scale("7");
+
+.shop-your-team__header {
+    justify-content: center;
+}
+
+.shop-your-team-buttons {
+    margin: auto;
+    width: 100%;
+    max-width: remCalc(500);
+    display: flex;
+    margin-bottom: spacing-scale("10");
+
+    &__item {
+        flex: 1 1 50%;
+        border-radius: 0;
+        justify-content: center;
+        opacity: 0.6;
+
+        &.is-showing {
+            opacity: 1;
+        }
+        & + & {
+            margin: 0;
+        }
+    }
+}
+
+
+.shop-your-team-container {
+    display: none;
+
+    margin: 0 auto spacing-scale("10");
+    max-width: calc(#{$shop-mobile-count} * #{$shop-item-width} + ((#{$shop-mobile-count} - 1) * #{$shop-item-gap--mobile}));
+
+    @include breakpoint("small") {
+        max-width: calc(#{$shop-tablet-count} * #{$shop-item-width} + ((#{$shop-tablet-count} - 1) * #{$shop-item-gap--mobile}));
+    }
+
+    @include breakpoint("medium") {
+        max-width: calc(#{$shop-desktop-count} * #{$shop-item-width} + ((#{$shop-desktop-count} - 1) * #{$shop-item-gap--desktop}));
+    }
+
+    &.is-showing {
+        display: block;
+    }
+
+    &__button {
+        width: remCalc(48px);
+        height: remCalc(48px);
+        border-radius: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: g-colour("gray", "0");
+        }
+    }
+}
+
+.your-team-toggler {
+    border: 2px g-colour("gray", "30") solid;
+    background: g-colour("gray", "10");
+    color: g-colour("gray", "60");
+    transition: color 0.2s;
+
+    &:hover {
+        color: g-colour("gray", "70");
+    }
+
+    &.is-showing {
+        border-color: g-colour("gray", "70");
+        background: g-colour("gray", "70");
+        color: g-colour("gray", "0");
+    }
+    &:first-of-type {
+        border-right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    &:last-of-type {
+        border-left: 0;
+        border-radius: 0 3px 3px 0;
+    }
+}
+
+.shop-your-team-list {
+    overflow: hidden;
+    max-height: remCalc(230px);
+    transition: max-height 0.6s cubic-bezier(.75,0,.25,1);
+    margin-bottom: spacing-scale("10");
+    text-align: center;
+    display: grid;
+    grid-column-gap: spacing-scale("4");
+    grid-row-gap: spacing-scale("7");
+    grid-template-columns: repeat($shop-mobile-count, $shop-item-width);
+
+    @include breakpoint("small") {
+        grid-template-columns: repeat($shop-tablet-count, $shop-item-width);
+    }
+
+    @include breakpoint("medium") {
+        grid-template-columns: repeat($shop-desktop-count, $shop-item-width);
+        grid-column-gap: spacing-scale("7");
+    }
+
+    &.is-full-height {
+        max-height: remCalc(1000px);
+    }
+
+    &__item {
+    }
+
+    &__link {
+        border-radius: 100%;
+        width: remCalc($shop-item-width);
+        height: remCalc($shop-item-width);
+        margin: auto;
+        background: g-colour("gray", "20");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s;
+        position: relative;
+        transition: 0.3s cubic-bezier(.75,0,.25,1);
+        
+        &:hover {
+            background: g-colour("gray", "70");
+
+            .shop-your-team-list__name {
+                opacity: 1;
+            }
+
+            .shop-your-team-list__image {
+                opacity: 0;
+            }
+
+            svg {
+                display: none;
+            }
+        }
+    }
+
+    &__logo {
+        width: remCalc(64px);
+        height: remCalc(64px);
+
+        svg {
+            width: remCalc(64px);
+            height: remCalc(64px);
+        }
+    }
+
+    &__name {
+        @include vertical-align;
+        position: absolute;
+        width: 100%;
+        padding: 0 spacing-scale("2");
+        transition: all 0.2s;
+        color: g-colour("gray", "0");
+        text-decoration: none;
+        opacity: 0;
+        font-size: g-heading("6");
+    }
+
+    &__image {
+        transition: all 0.2s;
+        display: block;
+        width: remCalc(52px);
+    }
+}

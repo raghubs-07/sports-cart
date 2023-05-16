@@ -1,0 +1,223 @@
+:root {
+    --heading-line-height: 1.2;
+    --body-line-height: 1.4;
+}
+
+html {
+    font-size: initial; // Reset foundation html font size
+    font-size: $html-fontSize;
+}
+
+body {
+    font-size: var(--text-base-size, 1rem);
+    font-family: var(--font-primary, sans-serif);
+    color: rgba(13, 11, 11, 5);
+    font-weight: var(--body-font-weight, normal);
+}
+
+// Heading font
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-headings, sans-serif);
+    margin: 0; // Reset foundation
+    text-transform: initial; // Reset foundation
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--color-contrast-higher, hsl(204, 28%, 7%));
+    line-height: var(--heading-line-height, 1.2);
+    font-weight: var(--heading-font-weight, 700);
+}
+
+h1 {
+    font-size: var(--text-preset-7, 3.052rem);
+}
+
+h2 {
+    font-size: var(--text-preset-6, 2.441rem);
+}
+
+h3 {
+    font-size: var(--text-preset-5, 1.953rem);
+}
+
+h4 {
+    font-size: var(--text-preset-4, 1.563rem);
+}
+
+h5 {
+    font-size: var(--text-preset-3, 1.25rem);
+}
+
+h6 {
+    font-size: var(--text-preset-2, 1rem);
+}
+
+small {
+    font-size: var(--text-preset-1, 0.8rem);
+}
+
+// --------------------------------
+// Inline Text
+// --------------------------------
+
+a,
+.link {
+    color: var(--color-primary, hsl(250, 84%, 54%));
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: bold;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+u {
+    text-decoration: underline;
+}
+
+// --------------------------------
+// Text Component - Class used to stylize text blocks
+// --------------------------------
+
+.text-component {
+    h1,
+    h2,
+    h3,
+    h4 {
+        line-height: calc(var(--heading-line-height) * var(--line-height-multiplier, 1));
+        margin-bottom: calc(var(--space-unit) * 0.49985 * var(--text-space-y-multiplier, 1));
+    }
+
+    h2,
+    h3,
+    h4 {
+        margin-top: calc(var(--space-unit) * 0.9994 * var(--text-space-y-multiplier, 1));
+    }
+
+    p,
+    blockquote,
+    ul li,
+    ol li {
+        line-height: calc(var(--body-line-height) * var(--line-height-multiplier, 1));
+    }
+
+    ul,
+    ol,
+    p,
+    blockquote,
+    .text-component__block {
+        margin-bottom: calc(var(--space-unit) * 0.9994 * var(--text-space-y-multiplier, 1));
+    }
+
+    ul,
+    ol {
+        list-style-position: inside;
+
+        ul,
+        ol {
+            padding-left: 1em;
+            margin-bottom: 0;
+        }
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    figcaption {
+        text-align: center;
+        margin-top: calc(var(--space-unit) * 0.49985rem);
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    hr {
+        margin-top: calc(var(--space-unit) * 1.99819 * var(--text-space-y-multiplier, 1));
+        margin-bottom: calc(var(--space-unit) * 1.99819 * var(--text-space-y-multiplier, 1));
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/** Our system will use a 4px base vertical rhythm */
+$verticalRhythmBase: 4;
+
+/** Our system's base font size */
+$baseFontSize: 16;
+
+/**
+ * Calculate the type offset for a given font
+ *
+ * @param {number} $lh - the font's base line height
+ * @param {number} $fontSize - the font's size
+ * @param {number} $descenderHeightScale - the font's descender height as a ratio
+ * @return {number} the offset to be added to a transformY to keep the text in place
+ */
+@function calculateTypeOffset($lh, $fontSize, $descenderHeightScale) {
+    $lineHeightScale: $lh / $fontSize;
+    @return ($lineHeightScale - 1) / 2 + $descenderHeightScale;
+}
+
+/**
+ * The basekick base function
+ *
+ * @param {number} $typeSizeModifier - a multiplier to determine the font size
+ * @param {number} $typeRowSpan - how many rows of our vertical rhythm should the type span
+ * @param {number} $descenderHeightScale - the height of the descender expressed as a ratio of the font
+ * @param {number} $capHeight - the font's cap height expressed as a ratio of the font
+ */
+@mixin basekick($typeSizeModifier, $typeRowSpan, $descenderHeightScale, $capHeight) {
+    $fontSize: $typeSizeModifier * $baseFontSize;
+    $lineHeight: $typeRowSpan * $verticalRhythmBase;
+    $typeOffset: calculateTypeOffset($lineHeight, $fontSize, $descenderHeightScale);
+    $topSpace: $lineHeight - $capHeight * $fontSize;
+    $heightCorrection: 0;
+
+    @if $topSpace >$verticalRhythmBase {
+        $heightCorrection: $topSpace - ($topSpace % $verticalRhythmBase);
+    }
+
+    $preventCollapse: 1;
+
+    font-size: #{$fontSize}px;
+    line-height: #{$lineHeight}px;
+    transform: translateY(#{$typeOffset}em);
+    padding-top: #{$preventCollapse}px;
+
+    &::before {
+        content: "";
+        margin-top: #{- ($heightCorrection + $preventCollapse)}px;
+        display: block;
+        height: 0;
+    }
+}

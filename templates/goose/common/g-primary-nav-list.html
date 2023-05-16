@@ -1,0 +1,130 @@
+<div class="primary-nav-wrap">
+    <nav class="primary-nav">
+        <div class="g-tabs-wrap js-g-tabs-wrap">
+            <ul class="g-tabs g-tabs--full-width js-g-tabs" role="tablist">
+                <li class="g-tabs__item" role="presentation">
+                    <button class="g-tabs__link js-tabs-link g-tabs__link--active" id="shop-league-tab" href="#shop-league" type="button" role="tab" aria-controls="shop-league" aria-selected="true" >Shop by league</button>
+                </li>
+                <li class="g-tabs__item" role="presentation">
+                    <button class="g-tabs__link js-tabs-link" id="shop-products-tab" href="#shop-products" type="button" role="tab" aria-controls="shop-products" aria-selected="false">Shop by product</button>
+                </li>
+            </ul>
+
+   
+            <div class="g-tabs__content js-my-tab-content">
+                <section class="g-tabs__pane js-tabs-pane g-tabs__pane--active" id="shop-league" role="tabpanel" aria-labelledby="shop-league-tab" tabindex="0">
+                    <ul class="primary-nav__list">
+                        {{#each categories}}
+                            {{#and (if name '!==' "Shop All") (if name '!==' "Collections")}}
+                                <li data-image-panel-target="{{toLowerCase (dashcase name)}}" data-subnav-target="{{toLowerCase (dashcase name)}}" class="primary-nav__item {{#if children}}has-children{{/if}}">
+                                    <a href="{{url}}">
+                                        <div class="primary-nav__item__text">
+                                            {{name}}
+                                        </div>
+                                        {{#if children}}
+                                            <i class="primary-nav__item__icon">
+                                                <svg>
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-right"></use>
+                                                </svg>
+                                            </i>
+                                        {{/if}}
+                                    </a>
+                                </li>
+                            {{/and}}
+                        {{/each}}
+                        {{#each pages}}
+                            {{#if name '===' 'navigation-hook'}}
+                                {{#each children}}
+                                    {{#if name '!==' 'Shop All'}}
+                                        <li class="primary-nav__item">
+                                            <a href="{{url}}">
+                                                <div class="primary-nav__item__text">
+                                                    {{name}}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {{/if}}
+                                {{/each}}
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </section>
+                <section class="g-tabs__pane js-tabs-pane" id="shop-products" role="tabpanel" aria-labelledby="shop-products-tab" tabindex="-1" hidden>
+                    <ul class="primary-nav__list">
+                        {{#each categories}}
+                            {{#if name '===' 'Shop All'}}
+                                {{#each children}}
+                                    <li data-image-panel-target="default" data-subnav-target="men" class="primary-nav__item {{#if children}}has-children{{/if}}">
+                                        <a href="{{url}}">
+                                            <div class="primary-nav__item__text">
+                                                {{name}}
+                                            </div>
+                                            {{#if children}}
+                                                <i class="primary-nav__item__icon">
+                                                    <svg>
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-g-chevron-right"></use>
+                                                    </svg>
+                                                </i>
+                                            {{/if}}
+                                        </a>
+                                    </li>
+                                {{/each}}
+                                {{#each ../pages}}
+                                    {{#if name '===' 'navigation-hook'}}
+                                        {{#each children}}
+                                            {{#if name '===' 'Shop All'}}
+                                                {{#each children}}
+                                                    <li class="primary-nav__item">
+                                                        <a href="{{url}}">
+                                                            <div class="primary-nav__item__text">
+                                                                {{name}}
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/each}}
+                                    {{/if}}
+                                {{/each}}
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </nav>
+    <div class="main-nav__ctas">
+        <ul class="list">
+            <li class="list__item">
+                <a class="main-nav__cta main-nav__cta--red" href="/giftcertificates.php">
+                    <div class="main-nav__cta__text">Gift Vouchers</div>
+                    <i class="main-nav__cta__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo-contrast"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+            <li class="list__item">
+                <a class="main-nav__cta main-nav__cta--grey" href="/collections/bundles">
+                    <div class="main-nav__cta__text">Shop Bundles</div>
+                    <i class="main-nav__cta__icon main-nav__cta__icon--lg">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-bundle"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+            <li class="list__item">
+                <a class="main-nav__cta main-nav__cta--purple" href="/market-sports-club-rewards">
+                    <div class="main-nav__cta__text">Club Rewards</div>
+                    <i class="main-nav__cta__icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-club"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

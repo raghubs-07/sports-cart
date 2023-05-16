@@ -1,0 +1,64 @@
+// Login / Logout
+
+.login-popup {
+    // Container
+    .swal2-popup {
+        padding: spacing-scale("8");
+    }
+
+    .swal2-close {
+        width: remCalc(18px);
+        height: remCalc(18px);
+    }
+
+    // Title
+    &__title {
+        color: g-colour("gray", "100") !important;
+        text-align: left !important;
+        padding: 0 !important;
+        margin-bottom: spacing-scale("5") !important;
+    }
+
+    .swal2-html-container {
+        margin: 0;
+    }
+
+    // Form
+    .form-input {
+        margin-bottom: spacing-scale("5");
+    }
+
+    // Actions
+
+    .swal2-actions {
+        margin: 0 0 spacing-scale("6") 0;
+        .g-button {
+            text-align: center;
+        }
+    }
+
+    // Footer
+    .swal2-footer {
+        border: none;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+
+        &,
+        & a {
+            color: g-colour("gray", "100");
+        }
+    }
+
+    &__bottom-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: spacing-scale("2");
+        font-size: var(--text-preset-3);
+    }
+
+    // Message
+    .swal2-validation-message {
+        margin-bottom: spacing-scale("2");
+    }
+}

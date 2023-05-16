@@ -1,0 +1,17 @@
+.spacing-scale {
+    &__scale {
+        display: flex;
+        padding: spacing-scale("1") 0;
+    }
+
+    &__text {
+        margin-right: spacing-scale("8");
+        min-width: 200px;
+    }
+
+    &__space {
+        display: block;
+        background: g-colour("accent", "base");
+        // height: spacing-scale("04");
+    }
+}

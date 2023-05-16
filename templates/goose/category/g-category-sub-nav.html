@@ -1,0 +1,36 @@
+<div class="sub-cat-nav swiper"  data-g-swiper='{
+    "slidesPerView": "auto",
+    "spaceBetween": 16,
+    "breakpoints": {
+        "1025": {
+            "enabled": false
+        }
+    },
+    "scrollbar": {
+    "el": ".swiper-scrollbar",
+    "draggable": true,
+    "snapOnRelease": true
+    }}'>
+    <ul class="sub-cat-nav__list swiper-wrapper"  id="cat-sub-nav-list">
+        {{#each category}}
+            <li class="sub-cat-nav__item swiper-slide">
+                <a href="{{url}}">
+                    <div class="sub-cat-nav__image">
+                        {{> components/common/responsive-img
+                            image=image
+                            fallback_size=theme_settings.zoom_size
+                            lazyload=theme_settings.lazyload_mode
+                            class=""
+                            default_image="assets/img/placeholder.jpg"
+                        }}
+                    </div>
+                    <div class="sub-cat-nav__name">
+                        {{name}}
+                    </div>
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+    <div class="swiper-scrollbar"></div>
+    <a href="#cat-sub-nav-list"  class="toggleLink" data-collapsible >Show all categories</a>
+</div>

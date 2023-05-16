@@ -1,0 +1,184 @@
+{{!-- Tabs --}}
+<div class="cart-view__summary__tabs js-g-tabs-wrap">
+    <div class="cart-view__summary__tabs-container js-g-tabs">
+        <a class="cart-view__summary__tab js-tabs-link" id="discount-tab" href="#discount" type="button" role="tab" aria-controls="discount" aria-selected="true">Discount Code</a>
+        <a class="cart-view__summary__tab js-tabs-link" id="gift-voucher-tab"  href="#gift-voucher" type="button" role="tab" aria-controls="gift-voucher" aria-selected="false">Gift Voucher</a>  
+    </div>
+
+    <div class="cart-view__summary__content-container js-my-tab-content">
+        <div class="cart-view__summary__content js-tabs-pane" id="discount" role="tabpanel" aria-labelledby="discount-tab" tabindex="0">
+            {{> goose/cart/coupon-input}}
+        </div>
+        <div class="cart-view__summary__content js-tabs-pane" id="gift-voucher" role="tabpanel" aria-labelledby="gift-voucher-tab" tabindex="-1" hidden>
+            {{> goose/cart/gift-certificate-input}}
+        </div>
+    </div>
+    <span class="cart-view__summary__notice">If you have a coupon or discount code enter it above.</span>
+</div>
+
+{{!-- Totals --}}
+<section class="cart-totals">
+    <h3 class="u-heading-5 u-layout-margin-bottom-2">Order Summary</h3>
+    <div class="cart-total">
+        <div class="cart-total-label">
+            {{lang 'cart.checkout.subtotal'}}
+        </div>
+        <div class="cart-total-value">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                <span>{{cart.sub_total.formatted}}</span>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </div>
+    {{#if cart.gift_wrapping_cost.value}}
+        <div class="cart-total">
+            <div class="cart-total-label">
+                {{lang 'cart.checkout.gift_wrapping'}}
+            </div>
+            <div class="cart-total-value">
+                <span>{{cart.gift_wrapping_cost.formatted}}</span>
+            </div>
+        </div>
+    {{/if}}
+    {{#if cart.shipping_handling.shipping_cost}}
+        <div class="cart-total">
+            <div class="cart-total-label">
+                {{lang 'cart.checkout.shipping'}}
+            </div>
+            <div class="cart-total-value">
+                    {{cart.shipping_handling.shipping_cost.formatted}}
+            </div>
+        </div>
+    {{/if}}
+    {{#each cart.taxes}}
+        {{#unless included}}
+            <div class="cart-total">
+                <div class="cart-total-label">
+                    {{name}}
+                </div>
+                <div class="cart-total-value">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </div>
+        {{/unless}}
+    {{/each}}
+    {{#if cart.discount }}
+        <div class="cart-total">
+            <div class="cart-total-label">
+                {{lang 'cart.discount'}}
+            </div>
+            <div class="cart-total-value">
+                {{cart.discount.formatted}}
+            </div>
+        </div>
+    {{/if}}
+    {{#if cart.coupons}}
+        {{#each cart.coupons}}
+            <div class="cart-total">
+                <div class="cart-total-label">
+                    {{lang 'cart.coupons.code_label' code=code}}
+                    <div>
+                        <a href="{{remove_url}}">{{lang 'cart.coupons.remove'}}</a>
+                    </div>
+                </div>
+                <div class="cart-total-value">
+                    <span>{{discount.formatted}}</span>
+                </div>
+            </div>
+        {{/each}}
+
+    {{/if}}
+    {{#if settings.gift_certificates_enabled}}
+        {{#each cart.gift_certificates}}
+            <div class="cart-total">
+                <div class="cart-total-label">
+                    {{lang 'cart.gift_certificates.code_label' code=code}}
+                    <span>
+                        {{remaining.formatted}} | <a href="{{remove_url}}">{{lang 'cart.gift_certificates.remove'}}</a>
+                    </span>
+                </div>
+                <div class="cart-total-value">
+                    {{used.formatted}}
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
+   
+    {{#each cart.taxes}}
+        {{#if included}}
+            <div class="cart-total cart-total--tax">
+                <div class="cart-total-label">
+                   {{concat name (lang 'cart.included_in_total')}}
+                </div>
+                <div class="cart-total-value">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+
+    <hr class="u-layout-margin-vertical-1">
+
+    <div class="cart-total">
+        <div class="cart-total-label">
+           {{lang 'cart.checkout.grand_total'}}
+        </div>
+        <div class="cart-total-value cart-total-grandTotal">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                <span>{{cart.grand_total.formatted}}</span>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </div>
+</section>
+
+
+{{{region name="cart_below_totals"}}}
+
+{{#or customer (unless settings.hide_price_from_guests)}}
+{{#if cart.additional_checkout_buttons}}
+    <div data-cart-accelerated-checkout-buttons class="cart-acceleratedCheckoutButtons cart-content-padding-right"></div>
+{{/if}}
+
+{{#if cart.show_primary_checkout_button}}
+    <div class="cart-actions cart-content-padding-right">
+        <a
+                class="g-button g-button--primary"
+                href="{{urls.checkout.single_address}}"
+                title="{{lang 'cart.checkout.title'}}"
+                data-primary-checkout-now-action
+        >
+            {{lang 'cart.checkout.button'}}
+        </a>
+        {{#if cart.show_multiple_address_shipping}}
+            <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
+                {{lang 'cart.preview.checkout_multiple'}}
+            </a>
+        {{/if}}
+    </div>
+{{else}}
+    <div class="cart-actions cart-content-padding-right">
+        <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
+    </div>
+{{/if}}
+
+{{#if cart.additional_checkout_buttons}}
+    <div data-cart-additional-checkout-buttons class="cart-additionalCheckoutButtons cart-content-padding-right u-layout-margin-bottom-1">
+        {{> components/cart/additional-checkout-buttons}}
+    </div>
+{{/if}}
+{{else}}
+<div class="cart-actions cart-content-padding-right">
+    <a class="button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">{{lang 'cart.login_to_checkout'}}</a>
+</div>
+{{/or}}
+
+{{> goose/common/g-secure-payments }}
+
+<!-- TrustBox widget - Micro Combo -->
+<div class="trustpilot-widget" data-locale="en-US" data-stars="4,5" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5067e68a00006400051c564c" data-style-height="20px" data-style-width="100%" data-theme="light">
+    <a href="https://www.trustpilot.com/review/www.marketsports.com.au" target="_blank" rel="noopener">Trustpilot</a>
+  </div>
+  <!-- End TrustBox widget -->

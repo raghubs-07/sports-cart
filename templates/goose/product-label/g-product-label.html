@@ -1,0 +1,9 @@
+{{#if type '===' "sale"}}
+    <svg><use xlink:href="#icon-badge-sale"></use></svg>
+{{else if type "===" "pre order"}}
+    <svg><use xlink:href="#icon-badge-pre-order"></use></svg>
+{{else if type "===" "free gift"}}
+    <svg><use xlink:href="#icon-badge-free-gift"></use></svg>
+{{else if type "===" "sold out"}}
+    <svg><use xlink:href="#icon-badge-sold-out"></use></svg>
+{{/if}}

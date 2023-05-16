@@ -1,0 +1,83 @@
+// =============================================================================
+// LAYOUT SPACING
+// =============================================================================
+
+// Spacing scale
+// -----------------------------------------------------------------------------
+
+// Space base settings
+$g-spacing-base-unit: 4;
+
+$g-spacing-1: $g-spacing-base-unit; // 4
+$g-spacing-2: $g-spacing-1 + $g-spacing-base-unit; //8
+$g-spacing-3: $g-spacing-2 + $g-spacing-base-unit; //12
+$g-spacing-4: $g-spacing-3 + $g-spacing-base-unit; //16
+$g-spacing-5: $g-spacing-4 + $g-spacing-base-unit; //20
+$g-spacing-6: $g-spacing-5 + $g-spacing-base-unit; //24
+$g-spacing-7: $g-spacing-6 + $g-spacing-base-unit; //28
+$g-spacing-8: $g-spacing-7 + $g-spacing-base-unit; //32
+$g-spacing-9: $g-spacing-8 + $g-spacing-base-unit; //36
+$g-spacing-10: $g-spacing-9 + $g-spacing-base-unit; //40
+$g-spacing-11: $g-spacing-10 + $g-spacing-base-unit; //44
+$g-spacing-12: $g-spacing-11 + $g-spacing-base-unit; //48
+
+$goose--spacing: (
+    "1": remCalc($g-spacing-1),
+    "2": remCalc($g-spacing-2),
+    "3": remCalc($g-spacing-3),
+    "4": remCalc($g-spacing-4),
+    "5": remCalc($g-spacing-5),
+    "6": remCalc($g-spacing-6),
+    "7": remCalc($g-spacing-7),
+    "8": remCalc($g-spacing-8),
+    "9": remCalc($g-spacing-9),
+    "10": remCalc($g-spacing-10),
+    "11": remCalc($g-spacing-11),
+    "12": remCalc($g-spacing-12),
+    "none": 0,
+) !default;
+
+// @each $name, $space in $goose--spacing {
+//     @debug $space;
+// }
+
+// Layout scale
+// -----------------------------------------------------------------------------
+
+$goose--layout: (
+    "1": remCalc(16),
+    "2": remCalc(24),
+    "3": remCalc(32),
+    "4": remCalc(48),
+    "5": remCalc(64),
+    "6": remCalc(96),
+    "7": remCalc(160),
+    "none": 0,
+) !default;
+
+// Generate spacing values
+@function spacing-scale($name) {
+    @return map-get($goose--spacing, $name);
+}
+
+@function layout-scale($name) {
+    @return map-get($goose--layout, $name);
+}
+
+$spacer-prefix: --spacing-;
+
+// // ------------------------------
+// // Set root variables
+// // ------------------------------
+
+:root {
+    @each $name, $space in $goose--spacing {
+        #{$spacer-prefix}#{$name}: $space;
+
+        // @debug #{$spacer-prefix}#{$name}#{":"}$space;
+    }
+}
+
+// body {
+//     font-size: strip-unit(#{var(--space-2)}) !important;
+// }

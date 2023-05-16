@@ -1,0 +1,55 @@
+<div class="search-results">
+    {{#if message}}
+        <div class="search-results__empty">
+            <div class="search-results__empty-count">
+                {{pagination.product_results.total}} results
+            </div>
+            <div class="search-results__empty-info">
+                Sorry, no results for "{{forms.search.query}}"
+            </div>
+        </div>
+    {{else}}
+        <div class="search-results__keywords">
+            <!-- Keyword Suggestions -->
+            <a href="{{urls.search}}?search_query=Premiership" class="search-results__keyword">Try "Premiership"</a>
+            <a href="{{urls.search}}?search_query=Geelong Cats" class="search-results__keyword">Try "Geelong Cats"</a>
+            <a href="{{urls.search}}?search_query=Hoodie" class="search-results__keyword">Try "Hoodie"</a>
+        </div>
+    {{/if}}
+
+    <div class="search-results__main">
+        <div class="search-results__left">
+            <!-- Popular Products -->
+            <div class="search-results__products">
+                <h4 class="search-results__products-title u-layout-margin-bottom-2">Popular Products</h4>
+                <div class="search-results__products-container  g-search-results-products">
+                    <!-- To be populated via API -->
+                </div>
+            </div>
+        </div>
+        <div class="search-results__right">
+            <!-- Popular Brands -->
+            <div class="search-results__brands">
+                <h4 class="search-results__products-title u-layout-margin-bottom-2">Shop Leagues</h4>
+                <div class="search-results__brands-container">
+                    <a href="/afl-store" class="search-results__brand">
+                        <img src="{{cdn 'img/logo-afl.png'}}" alt="AFL">
+                    </a>
+                    <a href="/nrl-shop" class="search-results__brand">
+                        <img src="{{cdn 'img/logo-nrl.png'}}" alt="NRL">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links -->
+           {{!-- <div class="search-results__actions">
+                <a href="/brands" class="g-button g-button--outline g-button--icon">View All Brands <svg>
+                        <use xlink:href="#icon-arrow-right"></use>
+                    </svg></a>
+                <a href="#" class="g-button g-button--outline g-button--icon">View New Arrivals <svg>
+                        <use xlink:href="#icon-arrow-right"></use>
+                    </svg></a>
+            </div> --}}
+        </div>
+    </div>
+</div>

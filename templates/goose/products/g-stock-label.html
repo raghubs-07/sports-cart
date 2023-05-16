@@ -1,0 +1,31 @@
+{{#unless product.can_purchase}}
+    {{#if product.out_of_stock}}
+        {{#if product.out_of_stock_message}}
+            <div class="stock-block stock-block--out">
+                <div class="stock-block__text">
+                    {{product.out_of_stock_message}}
+                </div>
+            </div>
+        {{else}}
+            <div class="stock-block stock-block--out">
+                <div class="stock-block__text">
+                    Out of Stock
+                </div>
+            </div>
+        {{/if}}
+    {{else}}
+        <div class="stock-block stock-block--out">
+            <div class="stock-block__text">
+                Out of Stock
+            </div>
+        </div>
+    {{/if}}
+{{else}}
+    {{!-- {{#unless product.pre_order}}
+        <div class="stock-block stock-block--in">
+            <div class="stock-block__text">
+                In Stock
+            </div>
+        </div>
+    {{/unless}} --}}
+{{/unless}}

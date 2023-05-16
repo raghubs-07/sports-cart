@@ -1,0 +1,43 @@
+<section class="product-row product-slider product-row--related product-slider--related swiper" data-g-swiper='{
+    "slidesPerView": 2,
+    "spaceBetween": 32,
+    "breakpoints": {
+        "750": {
+            "slidesPerView": 4
+        },
+        "1024": {
+            "slidesPerView": 6
+        }
+    },
+    "navigation": {
+        "nextEl": ".swiper-button-next",
+        "prevEl": ".swiper-button-prev"
+      },
+    "scrollbar": {
+      "el": ".swiper-scrollbar",
+      "draggable": true
+    }}'>
+        <div class="product-row__header">
+            <h2 class="product-row__title">
+                {{lang 'products.related_products' }}
+            </h2>
+            <!-- Navigation -->
+            <div class="product-row__navigation">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <figure class="product-row__container swiper-wrapper">
+            {{#each products}}
+
+                <li class="product-row__item swiper-slide">
+                    {{>goose/products/g-card settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
+                </li>
+                
+            {{/each}}
+        </figure>
+        <!-- Scrollbar -->
+        <div class="swiper-scrollbar"></div>
+</section>
+

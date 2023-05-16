@@ -1,0 +1,143 @@
+.team-home {
+    &__columns {
+        @include breakpoint("medium") {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+    }
+
+    &__column {
+    }
+
+    &__teambrand {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        background: var(--team-primary-colour, g-colour("gray", "100"));
+        padding: spacing-scale("6");
+        text-align: center;
+
+        @include breakpoint("medium") {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            position: sticky;
+            top: 0;
+            transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 50%;
+            z-index: 5;
+            height: var(--winHeight);
+            padding: spacing-scale("4");
+        }
+
+        .scroll-arrow {
+            display: block;
+            position: absolute;
+            bottom: spacing-scale("4");
+
+            svg {
+                width: remCalc(48px);
+                height: remCalc(48px);
+            }
+
+            @include breakpoint("medium") {
+                display: none;
+            }
+        }
+    }
+
+    &__content {
+        grid-area: 1/2;
+        overflow: hidden;
+        // padding-top: var(--header-height);
+        padding: spacing-scale("8") spacing-scale("4");
+
+        @include breakpoint("medium") {
+            padding: spacing-scale("7");
+        }
+    }
+
+    &__header {
+        .heading {
+            margin-bottom: spacing-scale("7");
+        }
+
+        .g-button {
+            svg {
+                width: remCalc(16px);
+                height: remCalc(16px);
+            }
+        }
+    }
+
+    &__products {
+        .products-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-row: auto auto;
+            grid-column-gap: spacing-scale("7");
+            grid-row-gap: spacing-scale("7");
+        }
+    }
+}
+
+.teambrand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20%;
+
+    &__logo {
+        line-height: 0;
+
+        svg {
+            width: remCalc(200px);
+            height: remCalc(200px);
+        }
+    }
+
+    &__team-name {
+        color: g-colour("gray", "0");
+
+        .heading {
+            font-weight: g-font-weight("bold");
+            font-size: g-heading("d1");
+            color: g-colour("gray", "0");
+        }
+    }
+}
+
+.team-home-section {
+    padding: spacing-scale("8") 0;
+
+    &__header {
+        margin-bottom: spacing-scale("6");
+    }
+
+    &--footer {
+        padding: calc(#{spacing-scale("10")} * 2) 0;
+
+        .heading {
+            margin-bottom: spacing-scale("6");
+            font-size: g-heading("2");
+        }
+
+        .team-home-section__header {
+        }
+
+        .team-home-section__content {
+            max-width: remCalc(848px);
+            margin: 0 auto;
+            font-size: var(--text-preset-3);
+            margin-bottom: spacing-scale("12");
+        }
+    }
+
+    &--grey {
+        background: g-colour("gray", "10");
+    }
+}

@@ -1,0 +1,8 @@
+.pagination {
+    &__loader {
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: layout-scale("05");
+        max-width: remCalc(350px);
+    }
+}

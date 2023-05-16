@@ -1,0 +1,95 @@
+
+{{> goose/common/g-top-gutter-bar}}
+
+<header class="g-header">
+    <div class="g-header__container">
+        <div class="g-header__logo">
+            <div class="nav-trigger js-nav-trigger">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-burger-menu"></use>
+                </svg>
+            </div>
+            <div class="logo">
+                <a href="/">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="g-header__search">
+            <form class="form fast-simon-form" action="{{urls.search}}" data-old-action="/search.php">
+                <fieldset class="form-fieldset">
+                    <div class="form-field">
+                        <button class="form-submit" type="submit">
+                            <svg><use xlink:href="#icon-search"></use></svg>
+                        </button>
+                        <label class="is-srOnly" for="search_query">Search</label>
+                        <input class="form-input fast-autocomplete fast-autocomplete-input" data-prevent-quick-search-close="" data-search-quick="" name="search_query" id="search_query" data-error-message="Search field cannot be empty." placeholder="Explore 5000+ footy merchandise products" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Search and use arrows or TAB to navigate results" aria-autocomplete="list" data-autocomplete-id="fast-autocomplete-1234">
+                        <a href="#" class="g-search-clear">Clear</a>
+                        <a href="#" class="g-search-close">
+                            <svg><use xlink:href="#icon-close"></svg>
+                        </a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="g-header__utility">
+            <div class="utility-icons">
+                <div class="utility-icons__icon utility-icons__search">
+                    <a class="g-search-toggle">
+                        <svg><use xlink:href="#icon-search"></use></svg>
+                    </a>
+                </div>
+                <div class="utility-icons__icon utility-icons__club js-club-toggle">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-club"></use>
+                    </svg>
+                </div>
+                <div class="utility-icons__icon utility-icons__account">
+                    {{#if customer}}
+                        <a href="#" class="accNav-icon accNav-icon--positive">
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-account"></use>
+                            </svg>
+                        </a>
+                    {{else}}
+                        <a href="{{urls.auth.login}}" class="js-login accNav-icon">
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-account"></use>
+                            </svg>
+                        </a>
+                    {{/if}}
+                </div>
+                <div class="utility-icons__icon utility-icons__wishlist">
+                    <a class="wl-icon-top">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart-outline"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="utility-icons__icon utility-icons__cart">
+                    <a class="mc-cart-icon">
+                        <span class="cart-icon">
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cart"></use>
+                            </svg>
+                        </span>
+                        <span class="count-pill cart-quantity">
+                            <span class="count-pill__number"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="g-header__searchResults">
+    {{> components/goose/search/g-search-results-placeholder }}
+</div>
+<div class="g-header__usp-bar">
+    <div class="u-container">
+        {{> goose/common/g-usp-bar}}
+    </div>
+</div>
+{{region name="promo-bar--global"}}

@@ -1,0 +1,122 @@
+.card {
+    &:focus-within {
+        .card-figcaption {
+        }
+    }
+
+    &.focus-within {
+        .card-figcaption {
+        }
+    }
+}
+
+.card-figure {
+    &__link {
+    }
+}
+
+.card__wl-icon {
+    display: block;
+    position: absolute;
+    width: remCalc(32px);
+    height: remCalc(32px);
+    overflow: hidden;
+    background-color: g-colour("gray", "0");
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    top: spacing-scale("2");
+    right: spacing-scale("2");
+    z-index: 1;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .card__wl-icon__svg--active {
+        display: none;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        // stroke: var(--team-primary-colour, g-colour("gray", "80"));
+    }
+}
+
+.card-figcaption-body {
+    top: 80%;
+}
+
+.card-wl-icon--active.card {
+    .card__wl-icon__svg--active {
+        display: block;
+        fill: g-colour("red", "40");
+    }
+
+    .card__wl-icon__svg--inactive {
+        display: none;
+    }
+}
+
+.card-img-container {
+}
+
+.card-figcaption {
+}
+
+.card-figcaption-body {
+}
+
+.card-image {
+}
+
+.card-title {
+    font-size: var(--text-preset-4);
+    font-weight: g-font-weight("light");
+    margin-bottom: spacing-scale("2");
+    line-height: 1.5;
+    max-height: remCalc(48px);
+    overflow: hidden;
+}
+
+.price {
+    //color: var(--team-primary-colour, g-colour("gray", "80"));
+    color: g-colour("gray", "80");
+    font-weight: g-font-weight("bold");
+
+    &.price--non-sale {
+        color: g-colour("gray", "30");
+        text-decoration: line-through;
+        font-weight: g-font-weight("light");
+    }
+
+    &.price--sale {
+        margin-right: spacing-scale("1");
+        color: g-colour("red", "40");
+    }
+}
+
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after,
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after {
+    text-rendering: auto;
+}
+
+.price-section {
+    display: inline-block;
+}
+
+.card-text {
+}
+
+.card-text {
+}
+
+.card-figcaption-button {
+    min-height: auto;
+}
+
+.card-body {
+}

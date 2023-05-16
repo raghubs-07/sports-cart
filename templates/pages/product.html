@@ -1,0 +1,74 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject 'productId' product.id}}
+{{inject 'product' product}}
+
+{{#partial "page"}}
+    {{#each product.shipping_messages}}
+        <div class="u-layout-margin-bottom-2">
+            {{> components/common/alert/alert-info message}}
+        </div>
+    {{/each}}
+
+    <div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+        {{> goose/common/g-breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+
+    <div>
+        {{> goose/products/g-product-view}}
+
+        {{!-- {{> components/products/product-view}} --}}
+
+        {{{region name="product_below_content"}}}
+
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
+
+        {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+
+        <div class="u-container">
+            {{> goose/products/g-description-tabs}}
+        </div>
+
+        <!-- TrustBox widget - Mini Carousel -->
+        <div class="u-container trustpilot-widget" data-locale="en-US" data-stars="4,5" data-template-id="539ad0ffdec7e10e686debd7" data-businessunit-id="5067e68a00006400051c564c" data-style-height="350px" data-style-width="100%" data-theme="light" data-stars="1,2,3,4,5" data-review-languages="en">
+            <a href="https://www.trustpilot.com/review/www.marketsports.com.au" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+        <!-- End TrustBox widget -->
+
+        <div class="product-view__reviews"></div>
+        
+        <div class="u-layout-margin-bottom-4">
+            {{> goose/common/g-trust-factor}}
+        </div>
+        
+        <div class="u-container">
+            {{#if product.related_products}}        
+                {{> goose/products/g-carousel products=product.related_products title="Related Products" class="u-layout-margin-bottom-4"}}
+            {{/if}}
+
+            {{#if product.similar_by_views}}        
+                {{> goose/products/g-carousel products=product.similar_by_views title="People Also Liked" class="u-layout-margin-bottom-4"}}
+            {{/if}}
+        </div>
+
+        <div class="u-container u-spacing-margin-bottom-8">
+            {{> goose/common/g-club-rewards-block}}
+        </div>
+    </div>
+
+    {{> components/products/schema}}
+{{/partial}}
+{{> layout/base}}

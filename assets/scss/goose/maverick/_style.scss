@@ -1,0 +1,33 @@
+//// ⚠️  **** Note ****  ⚠️ ////
+// maverick uses BC provided remCalc function which uses the "fontSize-root" variable
+// in config.json this needs to be reset to 16 for desired calculations.
+
+// Import our base styles //
+// ⚠️  We shouldn't have to edit base files. ⚠️
+// Talk with team before doing so
+
+@import "base/bc-reset";
+@import "base/reset";
+@import "base/mixins";
+@import "base/colours";
+@import "base/spacing";
+@import "base/shared-styles";
+@import "base/typography";
+@import "base/buttons";
+@import "base/layout";
+@import "base/container";
+
+
+// Import our custom styles
+@import "custom/utils";
+@import "custom/colours";
+@import "custom/spacing";
+@import "custom/layout";
+@import "custom/shared-styles";
+@import "custom/typography";
+@import "custom/buttons";
+
+// Style Guide (visual development)
+@import "style-guide/layout";
+@import "style-guide/colour-palette";
+@import "style-guide/spacing-scale";

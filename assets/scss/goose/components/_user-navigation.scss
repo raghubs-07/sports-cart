@@ -1,0 +1,93 @@
+.user-navigation {
+    display:none;
+    position: absolute;
+    z-index: 1;
+    min-width: 250px;
+    left: 0;
+    width: calc(100% - #{spacing-scale("6")});
+    margin: spacing-scale("4") spacing-scale("4") 0;
+
+    @include breakpoint("small") {
+        width: auto;
+        margin: spacing-scale("4") 0 0;
+        transform: translateX(-50%);
+    }
+
+    @include breakpoint("xxlarge") {
+        transform: translate(0, 0);
+    }
+
+
+    &.is-open {
+        display: block;
+    }
+
+    // Header
+    &__header {
+        background-color: g-colour("gray", "20");
+        display: flex;
+        padding: spacing-scale("2") spacing-scale("4");
+        position: relative;
+        font-size: var(--text-preset-3);
+        line-height: 1.5;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &__user-icon {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: remCalc(32px);
+        height: remCalc(32px);
+        background-color: g-colour("gray", "0");
+        margin-right: spacing-scale("3");
+
+        svg {
+            width: 80%;
+            fill: g-colour("red", "50");
+        }
+    }
+
+    &__closeBtn {
+        position: absolute;
+        width: remCalc(18px);
+        height: remCalc(18px);
+        right: spacing-scale("4");
+        top: remCalc(4px);
+    }
+
+    // List
+    &__list {
+        display: flex;
+        flex-direction: column;
+        padding: 0 spacing-scale("2");
+        background-color: g-colour("gray", "0");
+    }
+
+    &__item {
+        padding: spacing-scale("2");
+        line-height: inherit;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid g-colour("gray", "20");
+        }
+    }
+
+    &__action {
+        color: g-colour("gray", "100");
+        text-decoration: none;
+        font-size: var(--text-preset-3);
+        line-height: 1.5;
+
+        &:hover {
+            color: g-colour("red", "40");
+        }
+    }
+    
+}

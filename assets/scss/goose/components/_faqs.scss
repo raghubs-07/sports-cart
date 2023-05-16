@@ -1,0 +1,41 @@
+.faqs {
+    .g-accordion__heading {
+        font-size: var(--text-preset-4);
+        flex: 1;
+        padding-right: spacing-scale("4");
+
+        @include breakpoint("medium") {
+            font-size: var(--text-preset-5);
+        }
+    }
+
+    .g-accordion__item {
+        &:hover {
+            svg {
+                fill: g-colour("red", "40");
+            }
+        }
+    }
+
+    .g-accordion__content {
+        font-size: var(--text-preset-3);
+        padding-bottom: spacing-scale("6");
+        color: g-colour("gray", "60");
+
+        @include breakpoint("medium") {
+            font-size: var(--text-preset-4);
+            padding-top: spacing-scale("3");
+            padding-bottom: spacing-scale("9");
+        }
+    }
+
+    .g-accordion__toggle__icon {
+        width: remCalc(12px);
+        height: remCalc(12px);
+
+        .open-close-icon {
+            width: remCalc(12px);
+            height: remCalc(12px);
+        }
+    }
+}

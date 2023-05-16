@@ -1,0 +1,15 @@
+.design-system {
+    header {
+        margin-bottom: spacing-scale("6");
+    }
+
+    section {
+        border: 1px solid g-colour("gray", "20");
+        padding: spacing-scale("9");
+
+        section {
+            border: 0;
+            padding: 0;
+        }
+    }
+}

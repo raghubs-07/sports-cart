@@ -1,0 +1,25 @@
+<div class="ladder-wrap js-product-ladder" data-category-url="{{#if category.subcategories}}{{#each category.subcategories}}{{#if name '===' 'Shop All'}}{{url}}{{#if ../sorturl}}{{../sorturl}}{{/if}}{{/if}}{{/each}}{{else}}{{#if category.name '===' 'Shop All'}}{{category.url}}{{#if sorturl}}{{sorturl}}{{/if}}{{/if}}{{/if}}">
+    <div class="ladder-header">
+        <h4 class="heading">{{name}}</h4>
+        <a href="{{#if category.subcategories}}{{#each category.subcategories}}{{#if name '===' 'Shop All'}}{{url}}{{#if ../sorturl}}{{../sorturl}}{{/if}}{{/if}}{{/each}}{{else}}{{#if category.name '===' 'Shop All'}}{{category.url}}{{#if sorturl}}{{sorturl}}{{/if}}{{/if}}{{/if}}">View all</a>
+    </div>
+
+    <table class="ladder">
+        <thead>
+            <tr class="ladder__row ladder__row--header u-border-bottom">
+                <th class="ladder__item ladder__item--header">
+                    Pos
+                </th> 
+                <th class="ladder__item ladder__item--product ladder__item--header">
+                    Product
+                </th> 
+                <th class="ladder__item ladder__item--header">
+                    Price
+                </th> 
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Generated in g-ladder-products.js-->
+        </tbody>
+    </table>
+</div>

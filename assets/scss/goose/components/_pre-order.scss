@@ -1,0 +1,8 @@
+.pre-order {
+    &__msg {
+        padding: spacing-scale("3");
+        background: g-colour("warning", "base");
+        text-align: center;
+        margin-bottom: spacing-scale("3");
+    }
+}

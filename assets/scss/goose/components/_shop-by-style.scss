@@ -1,0 +1,76 @@
+.shop-by-style {
+    @include breakpoint("large") {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.shop-by-style-block {
+    &--tags {
+        @include breakpoint("large") {
+            padding: spacing-scale("8") spacing-scale("10");
+        }
+    }
+    
+    &--products {
+        @include breakpoint("large") {
+            flex-basis: 68%;
+            .product {
+                width: 25%;
+            }
+        }
+    }
+
+    &__heading {
+        @include bpmax($large) {
+            margin-top: spacing-scale("8");
+        }
+
+        margin-bottom: spacing-scale("8");
+
+    }
+
+    // Grid
+    .productGrid .product {
+        @include breakpoint("small") {
+            width: 25%;
+        }
+    }
+}
+
+.shop-by-style-button-list {
+    @include clearfix;
+    @include breakpoint("large") {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        float: left;
+        margin-right: spacing-scale("4");
+        margin-bottom: spacing-scale("4");
+
+        @include breakpoint("large") {
+            margin-bottom: spacing-scale("3");
+        }
+    }
+}
+
+.shop-by-style-button {
+    background: g-colour("gray", "10");
+    color: g-colour("gray", "40");
+    border: 1px solid g-colour("gray", "20");
+
+    &:hover {
+        background: g-colour("gray", "30");
+        color: g-colour("gray", "50");
+    }
+
+    &[aria-selected="true"] {
+        color: g-colour("gray", "0");
+        background: g-colour("red", "40");
+        border-color: g-colour("red", "40");
+    }
+}     
+

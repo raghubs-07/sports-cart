@@ -1,0 +1,33 @@
+<div id="faceted-search-container">
+    <nav>
+        {{#if category.subcategories}}
+        <div class="accordion accordion--navList">
+            <div class="accordion-block">
+                <div class="accordion-nav-clear-holder">
+                    <button type="button" class="accordion-navigation toggleLink" data-collapsible="#facetedSearch-content--cat" aria-label="Category" aria-controls="facetedSearch-content--cat" aria-expanded="true">
+                        <span class="accordion-title">
+                            Category
+                        </span>
+                        <span>
+                            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                                <use xlink:href="#icon-g-chevron-down"></use>
+                            </svg>
+                            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                                <use xlink:href="#icon-g-chevron-up"></use>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="accordion-content" id="facetedSearch-content--cat">
+                    {{#each category.subcategories}}
+                        <li class="navList-item">
+                            <a class="navList-action" href="{{url}}" title="{{name}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{> goose/faceted-search/index product_results}}
+    </nav>
+</div>

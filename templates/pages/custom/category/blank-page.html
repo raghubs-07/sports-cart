@@ -1,0 +1,31 @@
+{{#partial "page"}}
+
+<div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+</div>
+
+<section class="page u-container u-spacing-margin-bottom-12">
+    {{{region name="page_builder_header"}}}
+
+    {{> goose/common/g-shop-your-team categories=categories active=category.name}}
+
+    {{{region name="page_builder_content"}}}
+</section>
+
+<section class="team-home-section team-home-section--footer u-text-centre">
+    <div class="u-container">
+        <div class="team-home-section__header">
+            <h4 class="heading">{{category.name}}</h4>
+        </div>
+        <div class="team-home-section__content text-component">
+            {{{category.description}}}
+        </div>
+
+        {{> goose/common/g-club-rewards-block}}
+    </div>
+</section>
+
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,306 @@
+// =============================================================================
+// TYPE UTILITIES
+// =============================================================================
+
+// Letter Spacing Map
+//-------------------------------------
+$goose--letter-spacing: (
+    "01": (
+        letter-spacing: #{var(--letter-spacing-1)},
+        // -0.24px
+    ),
+    "02": (
+        letter-spacing: #{var(--letter-spacing-2)},
+        // -0.16px
+    ),
+    "03": (
+        letter-spacing: #{var(--letter-spacing-3)},
+        // 0
+    ),
+    "04": (
+        letter-spacing: #{var(--letter-spacing-4)},
+        // 0.16px,
+    ),
+) !default;
+
+// Text Heading Map
+// -------------------------------------
+$goose--headings: (
+    "1": (
+        font-size: #{var(--text-preset-8)},
+    ),
+    "2": (
+        font-size: #{var(--text-preset-7)},
+    ),
+    "3": (
+        font-size: #{var(--text-preset-6)},
+    ),
+    "4": (
+        font-size: #{var(--text-preset-5)},
+    ),
+    "5": (
+        font-size: #{var(--text-preset-4)},
+    ),
+    "6": (
+        font-size: #{var(--text-preset-3)},
+    ),
+    "d1": (
+        font-size: #{var(--text-preset-9)},
+    ),
+    "d2": (
+        font-size: #{var(--text-preset-10)},
+    ),
+) !default;
+
+// Text Preset Map
+// -------------------------------------
+$goose--text-presets: (
+    "1": (
+        font-size: #{var(--text-preset-1)},
+    ),
+    "2": (
+        font-size: #{var(--text-preset-2)},
+    ),
+    "3": (
+        font-size: #{var(--text-preset-3)},
+    ),
+    "4": (
+        font-size: #{var(--text-preset-4)},
+    ),
+    "5": (
+        font-size: #{var(--text-preset-5)},
+    ),
+    "6": (
+        font-size: #{var(--text-preset-6)},
+    ),
+    "7": (
+        font-size: #{var(--text-preset-7)},
+    ),
+    "8": (
+        font-size: #{var(--text-preset-8)},
+    ),
+    "9": (
+        font-size: #{var(--text-preset-9)},
+    ),
+    "10": (
+        font-size: #{var(--text-preset-10)},
+    ),
+) !default;
+
+// Type Util Classes
+// -------------------------------------
+@each $step, $styles in $goose--headings {
+    .u-heading-#{$step} {
+        @include properties(map-get($goose--headings, $step));
+    }
+    //@debug ".u-heading-#{$step}";
+}
+
+@each $step, $styles in $goose--text-presets {
+    .u-text-preset-#{$step} {
+        @include properties(map-get($goose--text-presets, $step));
+    }
+    //@debug ".u-heading-#{$step}";
+}
+
+// Global Map Deep Get Function
+//------------------------------------
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+// Type Util Classes
+// -------------------------------------
+// @each $step, $styles in $goose--text {
+//     .u-heading-#{$step} {
+//         @include properties(map-get($goose--heading, $step));
+//         font-family: var(--font-headings, sans-serif);
+//     }
+
+//     //@debug ".u-heading-#{$step}";
+// }
+
+// @mixin g-letter-spacing($step) {
+//     @include properties(map-get($goose--letter-spacing, $step));
+// }
+
+// @each $step in $goose--text-presets {
+//     .u-text-preset-#{$step} {
+//         @include properties(map-get($goose--text-presets, $step));
+//     }
+
+//     @debug ".u-heading-#{$step}";
+// }
+
+// =============================================================================
+// SPACING UTILITIES
+// =============================================================================
+
+$goose-spacing-directions: (
+    null: null,
+    "-top": "-top",
+    "-right": "-right",
+    "-bottom": "-bottom",
+    "-left": "-left",
+    "-horizontal": "-left" "-right",
+    "-vertical": "-top" "-bottom",
+) !default;
+
+$goose-spacing-properties: (
+    "padding": "padding",
+    "margin": "margin",
+) !default;
+
+// Layout Util Classes
+// -----------------------------------------------------------------------------
+.u-align-centre {
+    display: flex;
+    justify-content: center;
+}
+
+.u-text-centre {
+    text-align: center;
+}
+
+// Spacing Util Classes
+// -----------------------------------------------------------------------------
+
+/**
+ * Utility classes to put specific spacing values onto elements. The below loop
+ * will generate us a suite of classes like:
+ *
+ *    
+ *   .u-spacing-padding-left-{step} 
+ *   .u-spacing-margin-right-{step}
+ *   .u-spacing-padding-{step} 
+ *   .u-spacing-padding-right-none-{step} 
+ *   .u-spacing-padding-horizontal-{step} 
+ *   .u-spacing-padding-vertical-{step} 
+ */
+
+@each $property-namespace, $property in $goose-spacing-properties {
+    @each $direction-namespace, $direction-rules in $goose-spacing-directions {
+        @each $size-namespace, $size in $goose--spacing {
+            .u-spacing-#{$property-namespace}#{$direction-namespace}-#{$size-namespace} {
+                @each $direction in $direction-rules {
+                    #{$property}#{$direction}: $size !important;
+                    // @debug "#{$property}#{$direction}: $size !important;";
+                }
+            }
+        }
+    }
+}
+
+// Layout Util Classes
+// -----------------------------------------------------------------------------
+
+/**
+ * Utility classes to put specific spacing values onto elements. The below loop
+ * will generate us a suite of classes like:
+ *
+ *   .u-layout-margin-top-{step} 
+ *   .u-layout-padding-left-{step} 
+ *   .u-layout-margin-right-{step}
+ *   .u-layout-padding-{step} 
+ *   .u-layout-padding-right-none-{step} 
+ *   .u-layout-padding-horizontal-{step} 
+ *   .u-layout-padding-vertical-{step} 
+ */
+
+@each $property-namespace, $property in $goose-spacing-properties {
+    @each $direction-namespace, $direction-rules in $goose-spacing-directions {
+        @each $size-namespace, $size in $goose--layout {
+            .u-layout-#{$property-namespace}#{$direction-namespace}-#{$size-namespace} {
+                @each $direction in $direction-rules {
+                    #{$property}#{$direction}: $size !important;
+                    // @debug "#{$property}#{$direction}: $size !important;";
+                }
+            }
+        }
+    }
+}
+
+@function g-colour($key, $value) {
+    $map: map-deep-get($goose--colours, $key, $value);
+
+    @return $map;
+}
+
+$goose--headings-no-props: (
+    "1": #{var(--text-preset-8)},
+    "2": #{var(--text-preset-7)},
+    "3": #{var(--text-preset-6)},
+    "4": #{var(--text-preset-5)},
+    "5": #{var(--text-preset-4)},
+    "6": #{var(--text-preset-3)},
+    "d1": #{var(--text-preset-9)},
+    "d2": #{var(--text-preset-10)},
+) !default;
+
+@function g-heading($key) {
+    $map: map-deep-get($goose--headings-no-props, $key);
+
+    @return $map;
+}
+
+//------------------------
+// Font weight utils
+//------------------------
+$goose--font-weights: (
+    "lighter": #{var(--font-weight-lighter)},
+    "light": #{var(--font-weight-light)},
+    "base": #{var(--font-weight-base)},
+    "bold": #{var(--font-weight-bold)},
+    "bolder": #{var(--font-weight-bolder)},
+) !default;
+
+@function g-font-weight($key) {
+    $map: map-get($goose--font-weights, $key);
+
+    @return $map;
+}
+
+//------------------------
+// Font weight utils
+//------------------------
+@function g-zindex($key) {
+    $map: map-get($goose--zindex, $key);
+
+    @return $map;
+}
+
+//------------------------
+// Container utils
+//------------------------
+
+.u-container {
+    @include u-container("true");
+}
+
+.u-container-no-gutter {
+    @include u-container();
+}
+
+.u-grid-container {
+    // width: var(--grid-width, 100%);
+    max-width: var(--grid-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-column-gap: var(--grid-column-gap);
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    padding-right: var(--container-gutter);
+    padding-left: var(--container-gutter);
+}
+
+.u-grid-container-no-gutter {
+    @extend .u-grid-container;
+
+    padding-right: 0;
+    padding-left: 0;
+}

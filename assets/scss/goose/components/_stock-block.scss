@@ -1,0 +1,42 @@
+.stock-block {
+    display: inline-block;
+    padding: spacing-scale("2") spacing-scale("5");
+    background: g-colour("gray", "10");
+    border-radius: 3px;
+    font-size: var(--text-preset-3);
+
+    &__text {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            display: block;
+            border-radius: 50%;
+            width: spacing-scale("1");
+            height: spacing-scale("1");
+            background-color: g-colour("info", "base");
+            margin-right: spacing-scale("2");
+        }
+    }
+
+    &--in {
+        .stock-block__text {
+            color: g-colour("info", "base");
+
+            &::before {
+                background-color: g-colour("info", "base");
+            }
+        }
+    }
+
+    &--out {
+        background: g-colour("gray", "20");
+
+        .stock-block__text {
+            &::before {
+                background-color: g-colour("gray", "50");
+            }
+        }
+    }
+}

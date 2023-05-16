@@ -1,0 +1,207 @@
+{{!-- <div class="wl-cart-item" data-item-row data-product-id="{{product_id}}" data-name="{{name}}" data-price="{{price.value}}">
+    <div class="cart-item__left">
+            <a class="cart-item-figure" href="{{url}}">
+            {{> components/common/responsive-img
+                    image=image
+                    class="cart-item-image"
+                    fallback_size=../theme_settings.productthumb_size
+                    lazyload=../theme_settings.lazyload_mode
+                    default_image=../theme_settings.default_image_product
+            }}
+        </a>
+    </div>
+    <div class="cart-item__middle">
+        {{#if brand.name}}
+            <div class="cart-item-brand">
+                {{brand.name}}
+            </div>
+        {{/if}}
+        <div class="cart-item-name card-title">
+            <a class="cart-item-name__label" href="{{url}}">{{name}}</a>
+        </div>
+
+        {{#if release_date}}
+            <p>({{release_date}})</p>
+        {{/if}}
+
+        {{#if options}}
+            <dl class="definitionList">
+                {{#each options}}
+                <dt class="definitionList-key">{{name}}:</dt>
+                <dd class="definitionList-value">
+                    {{#if is_file}}
+                    <a href="/viewfile.php?attributeId={{id}}&cartitem={{../id}}">{{value}}</a>
+                    {{else}}
+                    {{{ sanitize value}}}
+                    {{/if}}
+                </dd>
+                {{/each}}
+            </dl>
+        {{/if}}
+
+        {{#if type '==' 'GiftCertificate'}}
+            <a href="{{edit_url}}"
+                aria-label="{{lang 'cart.gift_certificates.change_gift_certificate' certificate_name=name}}"
+            >
+                {{lang 'common.change'}}
+            </a>
+        {{/if}}
+        {{#if event_date}}
+            <dl class="cart-item-options">
+                <dt class="cart-item-option-title">
+                    {{event_date.name}}
+                </dt>
+
+                <dd class="cart-item-option-description">
+                    {{event_date.date}}
+                </dd>
+            </dl>
+        {{/if}}
+        <div class="cart-item-price">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                {{> components/products/price price=price}}
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </div>
+    <div class="cart-item__right">
+            <button class="cart-remove icon"
+                    data-cart-itemid="{{id}}"
+                    data-wishlist-deleteitem
+                    data-wishlist-itemdeleteurl="{{remove_url}}"
+                    data-confirm-delete="{{lang 'cart.confirm_delete'}}"
+                    aria-label="{{lang 'cart.remove_item' name=name}}"
+            >
+                <svg><use xlink:href="#icon-close"></use></svg>
+            </button>
+    </div>
+    <div class="cart-item__bottom">
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            
+        {{#if show_cart_action}}
+            {{#if has_options}}
+                <a href="{{url}}" data-event-type="product-click" class="button button--tertiary" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+            {{/if}}
+            {{#if pre_order}}
+                <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
+            {{/if}}
+            {{#if add_to_cart_url }}
+                <a href="{{add_to_cart_url}}" data-wishlist-addtocart data-product-id="{{id}}" data-event-type="product-click" data-button-type="add-cart" class="button button--tertiary button--fullwidth">{{lang 'products.add_to_cart'}}</a>
+                <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+            {{/if}}
+            {{#if out_of_stock_message }}
+                <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+            {{/if}}
+            {{#if has_options}}
+            {{else}}
+                {{#if pre_order}}
+                {{else}}
+                    {{#if add_to_cart_url }}
+                    {{else}}
+                        {{#if out_of_stock_message }}
+                        {{else}}
+                        <a class="button button--tertiary button--fullwidth" aria-disabled="true" disabled>{{lang 'products.add_to_cart'}}</a>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    {{/or}}
+    </div>
+</div>
+ --}}
+
+<div class="wl__product" data-item-row data-product-id="{{product_id}}" data-name="{{name}}" data-product-removeUrl="{{remove_url}}" data-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}">
+    <!-- Left block -->
+    <div class="wl__product__figure-container">
+        <div class="wl__product__figure">
+            {{#if type '==' 'GiftCertificate'}}
+                <img
+                    class="cart-item-fixed-image"
+                    src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                    alt="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                    title="{{lang 'cart.gift_certificates.gift_certificate'}}"
+                >
+            {{else}}
+                {{> components/common/responsive-img
+                    image=image
+                    class="wl__product-image"
+                    fallback_size=../theme_settings.productthumb_size
+                    lazyload="lazyload"
+                    default_image=../theme_settings.default_image_product
+                }}
+            {{/if}}
+        </div>
+    </div>
+    <!-- Right block -->
+    <div class="wl__product__detail">
+            <a class="wl__product__title" href="{{url}}">{{name}}</a>
+            {{#if release_date}}
+                <p class="wl__product__info">({{release_date}})</p>
+            {{/if}}
+
+            <div class="wl__product__price-container">
+                {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+                <span class="wl__product__price {{#if price_discounted}}price--discounted{{/if}}">{{price.formatted}}</span>
+                {{#if price_discounted}}
+                    <span class="wl__product__price">{{price_discounted.formatted}}</span>
+                {{/if}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+
+        <div class="wl__product__bottom">
+            {{#unless has_options}}
+            <div class="wl__product__qty-container cart-item-quantity" >
+                <label class="form-label cart-item-label" for="qty-{{id}}">{{lang 'products.quantity'}}</label>
+                <div class="form-increment">
+                    <button class="button button--icon js-qty-btn"
+                            data-cart-itemid="{{id}}"
+                            data-action="dec"
+                    >
+                        <span class="is-srOnly">{{lang 'products.quantity_decrease' name=name}}</span>
+                        <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-remove" /></svg></i>
+                    </button>
+                    <input class="form-input form-input--incrementTotal"
+                        id="qty-{{id}}"
+                        name="qty-{{id}}"
+                        type="tel"
+                        value="1"
+                        data-quantity-min="{{min_purchase_quantity}}"
+                        data-quantity-max="{{max_purchase_quantity}}"
+                        min="1"
+                        pattern="[0-9]*"
+                        data-cart-itemid="{{id}}"
+                        data-action="manualQtyChange"
+                        aria-label="{{name}}"
+                        aria-live="polite">
+                    <button class="button button--icon js-qty-btn"
+                            data-cart-itemid="{{id}}"
+                            data-action="inc"
+                    >
+                        <span class="is-srOnly">{{lang 'products.quantity_increase' name=name}}</span>
+                        <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-add" /></svg></i>
+                    </button>
+                </div>
+            </div>
+            {{else}}
+            <!-- Placeholder -->
+            <div></div>
+            {{/unless}}
+            <button class="wl__product__cart-remove wl-remove"
+                    data-wl-itemid="{{id}}"
+                    data-confirm-delete="{{lang 'cart.confirm_delete'}}"
+                    aria-label="{{lang 'cart.remove_item' name=name}}"
+            >
+                Remove
+            </button>
+        </div>
+    </div>
+    {{#unless has_options}}
+        <a href="#" class="js-button-wl-moveToCart g-button g-button--secondary g-button--fullbleed">Add to Cart</a>
+    {{else}}
+        <a href="{{url}}" class="g-button g-button--secondary g-button--fullbleed">Choose Options</a>
+    {{/unless}}
+</div>

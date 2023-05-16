@@ -1,0 +1,522 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page container">
+    {{#unless theme_settings.hide_page_heading }}
+        <h1 class="page-heading">{{ page.title }}</h1>
+    {{/unless}}
+
+    <div class="design-system page-content grid">
+        <section class="u-layout-margin-bottom-4">
+            <header>
+                <h2><strong>Colours</strong></h2>
+            </header>
+            <div class="colour-palette">
+                <div class="palette palette__wrap">
+                    <h3 class="u-layout-margin-bottom-2">Gray</h2>
+                    <ul class="palette__list">
+                        <li class="palette__colour palette__colour--gray100">
+                            <div class="palette__colour__step">
+                            100
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray80">
+                            <div class="palette__colour__step">
+                            80
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray70">
+                            <div class="palette__colour__step">
+                            70
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray60">
+                            <div class="palette__colour__step">
+                            60
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray50">
+                            <div class="palette__colour__step">
+                            50
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray40">
+                            <div class="palette__colour__step">
+                            40
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray30">
+                            <div class="palette__colour__step">
+                            30
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray20">
+                            <div class="palette__colour__step">
+                            20
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray10">
+                            <div class="palette__colour__step">
+                            10
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--gray0">
+                            <div class="palette__colour__step">
+                            0
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="palette palette__wrap">
+                    <h3 class="u-layout-margin-bottom-2">Red</h2>
+                    <ul class="palette__list">
+                        <li class="palette__colour palette__colour--red60">
+                            <div class="palette__colour__step">
+                                60
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--red50">
+                            <div class="palette__colour__step">
+                                50
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--red40">
+                            <div class="palette__colour__step">
+                                40
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Accent Base
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--red30">
+                            <div class="palette__colour__step">
+                                30
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--red20">
+                            <div class="palette__colour__step">
+                                20
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Error Base
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--red10">
+                            <div class="palette__colour__step">
+                                10
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Error Light
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="palette palette__wrap">
+                    <h3 class="u-layout-margin-bottom-2">Blue</h2>
+                    <ul class="palette__list">
+                        <li class="palette__colour palette__colour--blue20">
+                            <div class="palette__colour__step">
+                                20
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Information Base
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--blue10">
+                            <div class="palette__colour__step">
+                                10
+                            </div>
+                            <div class="palette__colour__hsl">
+                               Information Light
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="palette palette__wrap">
+                    <h3 class="u-layout-margin-bottom-2">Green</h2>
+                    <ul class="palette__list">
+                        <li class="palette__colour palette__colour--green50">
+                            <div class="palette__colour__step">
+                                50
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Success Dark
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--green20">
+                            <div class="palette__colour__step">
+                                20
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Success Base
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--green10">
+                            <div class="palette__colour__step">
+                                10
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Success Light
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="palette palette__wrap">
+                    <h3 class="u-layout-margin-bottom-2">Yellow</h2>
+                    <ul class="palette__list">
+                        <li class="palette__colour palette__colour--yellow20">
+                            <div class="palette__colour__step">
+                                20
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Warning Base
+                            </div>
+                        </li>
+                        <li class="palette__colour palette__colour--yellow10">
+                            <div class="palette__colour__step">
+                                10
+                            </div>
+                            <div class="palette__colour__hsl">
+                                Warning Light
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="u-layout-margin-bottom-4">
+            <header>
+                <h2><strong>Buttons</strong></h2>
+            </header>
+            <div class="buttons">
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--primary u-layout-margin-right-1">Primary Button</button>
+                    <button class="g-button g-button--primary u-layout-margin-right-1" disabled>Primary Button Disabled</button>
+                    <button class="g-button g-button--primary focus" >Primary Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--lg g-button--primary u-layout-margin-right-1">Primary Button</button>
+                    <button class="g-button g-button--lg g-button--primary u-layout-margin-right-1" disabled>Primary Button Disabled</button>
+                    <button class="g-button g-button--lg g-button--primary u-layout-margin-right-1 focus">Primary Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--secondary u-layout-margin-right-1">Secondary Button</button>
+                    <button class="g-button g-button--secondary u-layout-margin-right-1" disabled>Secondary Button Disabled</button>
+                    <button class="g-button g-button--secondary focus" >Secondary Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--lg g-button--secondary u-layout-margin-right-1">Secondary Button</button>
+                    <button class="g-button g-button--lg g-button--secondary u-layout-margin-right-1" disabled>Secondary Button Disabled</button>
+                    <button class="g-button g-button--lg g-button--secondary u-layout-margin-right-1 focus">Secondary Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2 u-layout-padding-2" style="background: rgb(225, 225, 225);">
+                    <button class="g-button g-button--outline u-layout-margin-right-1">Outline Button</button>
+                    <button class="g-button g-button--outline u-layout-margin-right-1" disabled>Outline Button Disabled</button>
+                    <button class="g-button g-button--outline focus" >Outline Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2 u-layout-padding-2" style="background: rgb(225, 225, 225);">
+                    <button class="g-button g-button--outline g-button--outline-inverse u-layout-margin-right-1">Outline Button</button>
+                    <button class="g-button g-button--outline g-button--outline-inverse u-layout-margin-right-1" disabled>Outline Button Disabled</button>
+                    <button class="g-button g-button--outline g-button--outline-inverse focus" >Outline Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2 u-layout-padding-2" style="background: rgb(225, 225, 225);">
+                    <button class="g-button g-button--lg g-button--outline u-layout-margin-right-1">Outline Button</button>
+                    <button class="g-button g-button--lg g-button--outline u-layout-margin-right-1" disabled>Outline Button Disabled</button>
+                    <button class="g-button g-button--lg g-button--outline u-layout-margin-right-1 focus">Outline Button Focus</button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2 u-layout-padding-2" style="background: rgb(225, 225, 225);">
+                    <button class="g-button g-button--lg g-button--outline g-button--outline-inverse u-layout-margin-right-1">Outline Button</button>
+                    <button class="g-button g-button--lg g-button--outline g-button--outline-inverse u-layout-margin-right-1" disabled>Outline Button Disabled</button>
+                    <button class="g-button g-button--lgg-button--outline g-button--outline-inverse u-layout-margin-right-1 focus">Outline Button Focus</button>
+                </div>
+
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--icon g-button--primary u-layout-margin-right-1">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn
+                    </button>
+                    <button class="g-button g-button--icon g-button--primary u-layout-margin-right-1" disabled>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn Disabled
+                    </button>
+                    <button class="g-button g-button--icon g-button--primary focus">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn Focus
+                    </button>
+                </div>
+                <div class="buttons__group u-layout-margin-bottom-2">
+                    <button class="g-button g-button--icon g-button--lg g-button--primary u-layout-margin-right-1">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn
+                    </button>
+                    <button class="g-button g-button--icon g-button--lg g-button--primary u-layout-margin-right-1" disabled>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn Disabled
+                    </button>
+                    <button class="g-button g-button--icon g-button--lg g-button--primary u-layout-margin-right-1 focus">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="cds--btn__icon"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg>
+                        Primary Icon Btn Focus
+                    </button>
+                </div>
+            </div>
+        </section>
+           
+        <section class="u-layout-margin-bottom-4">
+            <header>
+                <h2><strong>Spacing Scale</strong></h2>
+            </header>
+            <div class="spacing-scale u-layout-margin-bottom-4">
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 1
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-1"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 2
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-2"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 3
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-3"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 4
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-4"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 5
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-5"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 6
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-6"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 7
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-7"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 8
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-8"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 9
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-9"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 10
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-10"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 11
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-11"></div>
+                </div>
+                <div class="spacing-scale__scale">
+                    <div class="spacing-scale__text">
+                        Space Scale 12
+                    </div>
+                    <div class="spacing-scale__space u-spacing-padding-right-12"></div>
+                </div>
+            </div>
+        </section>
+            <section class="u-layout-margin-bottom-4">
+                <header>
+                    <h2><strong>Layout Scale</strong></h2>
+                </header>
+                <div class="spacing-scale u-layout-margin-bottom-4">
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 1
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-1"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 2
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-2"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 3
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-3"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 4
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-4"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 5
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-5"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 6
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-6"></div>
+                    </div>
+                    <div class="spacing-scale__scale">
+                        <div class="spacing-scale__text">
+                            Layout Scale 7
+                        </div>
+                        <div class="spacing-scale__space u-layout-padding-right-7"></div>
+                    </div>
+                </div>
+        </section>
+        <section>
+            <section class="u-layout-margin-bottom-4">
+                <header>
+                    <h2><strong>Typography</strong></h2>
+                </header>
+                <div class="u-layout-margin-bottom-4">
+                    <div class="u-text-preset-1">Text Preset 1</div>
+                    <div class="u-text-preset-2">Text Preset 2</div>
+                    <div class="u-text-preset-3">Text Preset 3</div>
+                    <div class="u-text-preset-4">Text Preset 4</div>
+                    <div class="u-text-preset-5">Text Preset 5</div>
+                    <div class="u-text-preset-6">Text Preset 6</div>
+                    <div class="u-text-preset-7">Text Preset 7</div>
+                    <div class="u-text-preset-8">Text Preset 8</div>
+                    <div class="u-text-preset-9">Text Preset 9</div>
+                    <div class="u-text-preset-10">Text Preset 10</div>
+                </div>
+            </section>
+
+            <hr class="u-layout-margin-bottom-4 u-layout-margin-top-4"/>
+
+            <section class="u-layout-margin-bottom-4">
+                <header>
+                    <h2><strong>Headings</strong></h2>
+                </header>
+                <div class="u-layout-margin-bottom-4">
+                    <div class="u-heading-d2">Display Text 2</div>
+                    <div class="u-heading-d1">Display Text 1</div>
+                    <h1>h1</h1>
+                    <h2>h2</h2>
+                    <h3>h3</h3>
+                    <h4>h4</h4>
+                    <h5>h5</h5>
+                    <h6>h6</h6>
+                </div>
+            </section>
+
+            <hr class="u-layout-margin-bottom-4 u-layout-margin-top-4"/>
+            
+            <section class="u-layout-margin-bottom-4">
+                <header>
+                    <h2><strong>Text Component</strong></h2>
+                </header>
+                <div class="u-layout-margin-bottom-4 text-component">
+                    <h1>Heading 1</h1>
+                    <p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipisicing elit. <a href="/">Est voluptates vitae</a> labore blanditiis earum, debitis veritatis velit ex in numquam. A at eveniet tempore labore distinctio, blanditiis ex. Exercitationem, voluptates!</p>
+                    <h2>Heading 2</h2>
+                    <p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipisicing elit. <a href="/">Est voluptates vitae</a> labore blanditiis earum, debitis veritatis velit ex in numquam. A at eveniet tempore labore distinctio, blanditiis ex. Exercitationem, voluptates!</p>
+                    <h3>Heading 3</h3>
+                    <p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipisicing elit. <a href="/">Est voluptates vitae</a> labore blanditiis earum, debitis veritatis velit ex in numquam. A at eveniet tempore labore distinctio, blanditiis ex. Exercitationem, voluptates!</p>
+                    <h4>Heading 4</h4>
+                    <p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipisicing elit. <a href="/">Est voluptates vitae</a> labore blanditiis earum, debitis veritatis velit ex in numquam. A at eveniet tempore labore distinctio, blanditiis ex. Exercitationem, voluptates!</p>
+
+                    <hr>
+
+                    <h4>Text component Un-ordered List</h4>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                    </ul> 
+
+                    <h4>Text component Ordered List</h4> 
+                    <ol class="u-layout-margin-bottom-4">
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                    </ol>  
+
+                    <div class="u-layout-margin-bottom-4 u-text-preset-7">
+                        <div>Manrope Medium</div>
+                        <div><em>Manrope Medium Italic</em></div>
+                        <div style="font-weight: 700;">Manrope Semi Bold</div>
+                        <div style="font-weight: 700;"><em>Manrope Semi Bold Italic</em></div>
+                        <div style="font-weight: 800;">Manrope Bold</strong></div>
+                        <div style="font-weight: 800;"><em>Manrope Bold Italic</em></div>
+                    </div>
+
+                    <small>Small Text</small>
+                </div>
+            
+
+            
+                <div class="u-layout-margin-bottom-4">
+                    <hr>
+                </div>
+            
+            
+                <div class="u-layout-margin-bottom-4">
+                    <h4>Default Un-ordered List</h4>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                    </ul>  
+                </div>
+            
+                <div class="u-layout-margin-bottom-4">
+                    <h4>Default Ordered List</h4>
+                    <ol>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                    </ol>  
+                </div>
+
+
+                <div class="u-layout-margin-bottom-4">
+                    <h4>Bullet un-ordered List</h4>
+                    <ul class="u-bullet-list">
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                        <li>Lorem ipsum dolor sit amet </li>
+                    </ul>  
+                </div>
+            
+            </section>
+        </section>
+    </div>
+</main>
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,27 @@
+.account {
+    @include u-container();
+}
+
+.account-product-checkItem {
+    left: 0 !important; // BC override
+}
+
+.account-product-figure {
+    left: 0 !important; // BC override
+}
+
+.account-product-figure::after {
+    padding-bottom: 0 !important; // BC override
+}
+
+.account-product-body {
+    padding-left: spacing-scale("4") !important; // BC override
+}
+
+.account-list {
+    margin-bottom: layout-scale("4") !important; // BC override
+}
+
+.account-sidebar .definitionList {
+    margin-bottom: layout-scale("2") !important; // BC override
+}

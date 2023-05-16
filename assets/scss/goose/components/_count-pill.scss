@@ -1,0 +1,40 @@
+:root {
+    --pill-width-height--zero: #{spacing-scale("2")};
+    --pill-width-height--positive: #{spacing-scale("4")};
+}
+
+.count-pill {
+    position: absolute;
+    display: block;
+    right: 4px;
+    top: 8px;
+    width: var(--pill-width-height--zero);
+    height: var(--pill-width-height--zero);
+    line-height: var(--pill-width-height--zero);
+    background: g-colour("gray", "40");
+    border-radius: 50%;
+    color: g-colour("gray", "0");
+    font-weight: 700;
+    font-size: 0;
+
+    &__number {
+        display: none;
+    }
+
+    &--positive {
+        right: 0px;
+        top: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--pill-width-height--positive);
+        height: var(--pill-width-height--positive);
+        line-height: var(--pill-width-height--positive);
+        background: g-colour("red", "40");
+        font-size: var(--text-preset-2);
+        
+        .count-pill__number {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+// Chat status
+.chat-status {
+    &--online {
+        display: none;
+    }
+}
+
+body.chat-online {
+    .chat-status {
+        &--online {
+            display: block;
+        }
+
+        &--offline {
+            display: none;
+        }
+    }
+
+    .chaticon-indicator {
+        fill: g-colour("success", "base");
+    }
+}
+
+body.chat-hidden {
+    #gorgias-chat-container {
+        display: none;
+    }
+}
+
+.chaticon-indicator {
+    fill: g-colour("gray", "50");
+}

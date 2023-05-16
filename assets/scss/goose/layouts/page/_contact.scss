@@ -1,0 +1,67 @@
+.contact-page {
+    padding-top: spacing-scale("4");
+
+    .form {
+        margin-bottom: spacing-scale("12");
+    }
+
+    .form-actions {
+        text-align: left;
+    }
+
+    &__intro-wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__intro {
+        @include breakpoint("large") {
+            width: 53.333%;
+        }
+
+        .sub-heading {
+            font-size: var(--text-preset-9);
+            line-height: 1.1;
+            // margin: spacing-scale("3") 0;
+        }
+    }
+
+    &__contacts {
+    }
+
+    &__faq {
+        background: g-colour("gray", "10");
+        padding: calc(#{spacing-scale("12")} * 2) 0;
+
+        .heading {
+            margin-bottom: spacing-scale("4");
+        }
+    }
+}
+
+.contact-details {
+    &__item {
+        list-style: none;
+        margin-bottom: spacing-scale("4");
+    }
+}
+.contact-details-block {
+    margin-bottom: spacing-scale("12");
+    @include breakpoint("large") {
+        border-left: 1px solid g-colour("gray", "20");
+        padding: spacing-scale("12") 0 spacing-scale("12") spacing-scale("12");
+    }
+
+    &__item {
+        list-style: none;
+    }
+
+    &__label {
+        // font-size: var(--text-preset-3);
+        color: g-colour("gray", "50");
+    }
+
+    &__detail {
+    }
+}

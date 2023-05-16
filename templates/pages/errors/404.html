@@ -1,0 +1,19 @@
+{{#partial "page"}}
+
+<div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+</div>
+
+<div class="page page-404 u-container">
+    <section class="page-content page-content--centered">
+        <h1 class="page-heading">{{lang 'page_not_found.page_heading'}}</h1>
+        <p class="u-textAlignCenter u-spacing-margin-bottom-5">
+            {{lang 'page_not_found.message'}}
+        </p>
+
+        {{> components/common/search-box}}
+    </section>
+</div>
+
+{{/partial}}
+{{> layout/base}}

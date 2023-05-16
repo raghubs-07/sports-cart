@@ -1,0 +1,38 @@
+{{inject 'noCompareMessage' (lang 'compare.no_compare')}}
+
+{{!--#if product_results.products.length}}
+    {{> components/products/filter sort=pagination.product_results.sort}}
+{{/if--}}
+
+<div class="catgory-view__top-bar">
+    <div class="category-view__product-count">
+        0 items
+    </div>
+    <a class="category-view__fitler-toggle js-filter-toggle">
+        <i><svg><use xlink:href="#icon-filter"></use></svg></i>
+        <span>Filter &amp; Sort</span>
+    </a>
+</div>
+<div class="category-view__facets-bar">
+    {{> goose/faceted-search/facets-only product_results}}
+</div>
+
+<div {{#if settings.data_tag_enabled}} data-list-name="Search Results" {{/if}}>
+    {{#if theme_settings.product_list_display_mode '===' 'grid'}}
+        {{#if settings.data_tag_enabled}}
+            {{> components/products/grid products=product_results.products show_compare=product_results.show_compare event="list" theme_settings=theme_settings}}
+        {{else}}
+            {{> components/products/grid products=product_results.products show_compare=product_results.show_compare theme_settings=theme_settings}}
+        {{/if}}
+    {{else}}
+        {{#if settings.data_tag_enabled}}
+            {{> components/products/list products=product_results.products show_compare=product_results.show_compare event="list" theme_settings=theme_settings}}
+         {{else}}
+            {{> components/products/list products=product_results.products show_compare=product_results.show_compare theme_settings=theme_settings}}
+        {{/if}}
+    {{/if}}
+</div>
+
+{{> components/common/paginator pagination.product_results}}
+
+{{> goose/common/g-pagination-loader total=product_results.pagination.total }}

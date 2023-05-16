@@ -1,0 +1,8 @@
+{{#each product.custom_fields}}
+    {{#if name '!==' 'pack_products' }}
+        {{#if name '!==' 'pack_discount' }}
+            <dt class="productView-info-name">{{name}}:</dt>
+            <dd class="productView-info-value">{{{value}}}</dd>
+        {{/if}}
+    {{/if}}
+{{/each}}

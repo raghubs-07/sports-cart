@@ -1,0 +1,37 @@
+<div class="newsletter-form">
+    <form class="form newsletter-form__form" action="{{urls.subscribe.action}}" method="post">
+        <fieldset class="form-fieldset">
+            <input type="hidden" name="action" value="subscribe">
+            <input type="hidden" name="check" value="1">
+            <input type="hidden" class="g_bot_check">
+            <div class="form-field">
+                <label class="form-label is-srOnly" for="nl_name">Name</label>
+                <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+                <div class="form-prefixPostfix wrap">    
+                    <input class="form-input"
+                           id="nl_email"
+                           name="nl_email"
+                           type="email"
+                           value="{{customer.email}}"
+                           placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{lang 'newsletter.email_placeholder'}}{{/if}}"
+                           aria-describedby="alertBox-message-text"
+                           aria-required="true"
+                           required
+                           autocomplete="email"
+                    >
+                    <input class="g-button g-button--primary g-button--lg newsletter-form__button"
+                           type="submit"
+                           value="{{lang 'newsletter.subscribe_submit'}}"
+                           data-default-value="{{lang 'newsletter.subscribe_submit'}}"
+                    >
+                </div>
+                
+                <span class="newsletter-form__message  js-newsletter-message"></span>
+                {{#if settings.show_newsletter_summary }}
+                <div class="footer-newsletter-summary">{{settings.newsletter_summary}}</div>
+                {{/if}}
+    
+            </div>
+        </fieldset>
+    </form>
+</div>

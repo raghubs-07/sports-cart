@@ -1,0 +1,54 @@
+<section class="subcategory-carousel swiper" data-g-swiper='{
+    "slidesPerView": 2,
+    "spaceBetween": 16,
+    "breakpoints": {
+        "481": {
+            "slidesPerView": 2
+        },
+        "769": {
+            "slidesPerView": 4,
+            "spaceBetween": 40
+        }
+    },
+    "navigation": {
+        "nextEl": ".swiper-button-next",
+        "prevEl": ".swiper-button-prev"
+    },
+    "scrollbar": {
+    "el": ".swiper-scrollbar",
+    "draggable": true
+    }}'>
+
+        <div class="subcategory-carousel__header">
+            <h2 class="subcategory-carousel__title">
+                {{title}}
+            </h2>
+            <!-- Navigation -->
+            <div class="subcategory-carousel__navigation">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <figure class="subcategory-carousel__container swiper-wrapper">
+            {{#each categories}}
+                <a class="subcategory-carousel__item swiper-slide" href="{{url}}">
+                    <div class="subcategory-carousel__item__image-wrapper">
+                        {{> components/common/responsive-img
+                            image=image
+                            class="subcategory-carousel__item__image"
+                            fallback_size='1280w'
+                            lazyload=lazyload
+                            default_image="assets/img/placeholder.jpg"
+                        }}
+                    </div>
+                    <figcaption class="subcategory-carousel__item__title">
+                        {{name}}
+                    </figcaption>
+                </a>
+            {{/each}}
+        </figure>
+     
+        <!-- Scrollbar -->
+        <div class="swiper-scrollbar"></div>
+</section>

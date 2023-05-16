@@ -1,0 +1,44 @@
+<div class="shop-your-team">
+
+    <div class="shop-your-team__header home-section__header">
+        <h2 class="shop-your-team__title home-section__heading">
+            Shop Your Team
+        </h2>
+    </div>
+
+    <div class="shop-your-team-buttons">
+        {{#each categories}}
+            {{#or (if name '===' "AFL Store") (if name '===' "NRL Shop")}}
+                <button class="shop-your-team-buttons__item g-button your-team-toggler {{#if ../active '===' name}}is-showing{{/if}} js-toggle-team" data-team="{{toLowerCase (dashcase name)}}">{{name}}</button>
+            {{/or}}
+        {{/each}}
+    </div>
+
+    {{#each categories}}
+        {{#or (if name '===' "AFL Store") (if name '===' "NRL Shop")}}
+            <div class="shop-your-team-container js-team {{#if ../active '===' name}}is-showing{{/if}}" data-team-list="{{toLowerCase (dashcase name)}}">
+                <ul class="shop-your-team__list shop-your-team-list shop-your-team--list--afl js-team-list">
+                    {{#each children}}
+                        <li class="shop-your-team-list__item">
+                            <a class="shop-your-team-list__link" href="{{url}}">
+                                <span class="shop-your-team-list__logo">
+                                    <svg class="icon-teams-{{toLowerCase (dashcase name)}}" title="{{name}}">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-teams-{{toLowerCase (dashcase name)}}"></use>
+                                    </svg>
+
+                                    <svg class="icon-teams-{{toLowerCase (dashcase name)}}-placeholder" style="display: none;" title="{{name}}">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-placeholder"></use>
+                                    </svg>
+                                </span>
+                                <h3 class="shop-your-team-list__name">{{name}}</h3>
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+                <button type="button" class="g-button g-button--primary shop-your-team-container__button js-toggle-height shop-your-team__expand" aria-label="Toggle full list">
+                    <svg><use xlink:href="#icon-add" /></svg>
+                </button>    
+            </div>
+        {{/or}}
+    {{/each}}
+</div>

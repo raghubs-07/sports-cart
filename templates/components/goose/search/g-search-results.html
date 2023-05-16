@@ -1,0 +1,54 @@
+{{#if product_results.products}}
+<div class="search-results search-results--has-results">
+    <div class="search-results__main">
+        <div class="search-results__left">
+            <!-- Popular Products -->
+            <div class="search-results__products">
+                <h4 class="search-results__products-title u-layout-margin-bottom-2">Products</h4>
+                <div class="search-results__products-container  g-search-results-products">
+                    <ul class="productGrid" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results"{{/if}}>
+                        {{#each (limit product_results.products 4)}}
+                            <li class="product">
+                                {{> goose/products/g-card
+                                settings=../settings
+                                alternate=false
+                                show_compare=../show_compare
+                                theme_settings=../theme_settings
+                                customer=../customer
+                                event="list"
+                                position=(add @index 1)
+                                }}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <!-- Links -->
+            <div class="search-results__actions">
+                <a href="{{urls.search}}?search_query={{sanitize forms.search.query}}" class="g-button g-button--outline g-button--icon">See All ({{product_results.pagination.total}}) <svg>
+                        <use xlink:href="#icon-arrow-right"></use>
+                    </svg></a>
+            </div>
+        </div>
+        <div class="search-results__right">
+            <!-- Popular categories -->
+            <div class="search-results__categories">
+                <h4 class="search-results__products-title u-layout-margin-bottom-2">Categories</h4>
+                <div class="search-results__categories-container">
+                    {{!-- #if category_results.length }}
+                        {{#each (limit category_results 6)}}
+                            {{#each (limit this 8)}}
+                                <a href="{{url}}" class="search-results__category">{{name}}</a>
+                            {{/each}}
+                        {{/each}}
+                    {{else}}
+                        No suggested categories found.
+                    {{/if --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+    {{> components/goose/search/g-search-results-placeholder message=(lang 'search.results.quick_count' count=pagination.product_results.total search_query=(sanitize forms.search.query)) }}
+{{/if}}

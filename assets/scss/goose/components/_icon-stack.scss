@@ -1,0 +1,17 @@
+.icon-stack {
+    position: relative;
+    display: inline-block;
+    width: remCalc(48px);
+    height: remCalc(48px);
+    line-height: remCalc(48px);
+    vertical-align: middle;
+}
+
+.icon-stack__bg,
+.icon-stack__icon {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}

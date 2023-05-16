@@ -1,0 +1,18 @@
+.g-social-links {
+    .socialLinks-item {
+        margin: 0 spacing-scale("2") 0 0;
+
+        &:last-child {
+            margin: 0;
+        }
+
+        .icon {
+            width: remCalc(40px);
+            height: remCalc(40px);
+        }
+        svg {
+            width: remCalc(40px);
+            height: remCalc(40px);
+        }
+    }
+}

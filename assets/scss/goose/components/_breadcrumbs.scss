@@ -1,0 +1,18 @@
+.breadcrumbs-block {
+    display: block;
+}
+
+ol.breadcrumbs {
+    text-align: left;
+    display: block;
+
+    a {
+        text-decoration: none;
+        color: g-colour("gray", "40");
+        font-size: var(--text-preset-3);
+    }
+}
+
+.breadcrumb.is-active > .breadcrumb-label {
+    color: g-colour("gray", "60");
+}

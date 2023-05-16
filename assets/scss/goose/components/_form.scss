@@ -1,0 +1,17 @@
+// Form input types
+.form-input {
+    border-color: g-colour("gray", "30");
+    border-radius: 3px;
+    color: g-colour("gray", "40");
+
+    &::placeholder {
+        color: g-colour("gray", "40");
+    }
+}
+
+.form-actions {
+    &--flex {
+        display: flex;
+        align-items: center;
+    }
+}

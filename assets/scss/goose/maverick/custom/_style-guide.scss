@@ -1,0 +1,86 @@
+.spacing-scale {
+    &__space {
+        display: block;
+
+        height: 40px;
+        margin-bottom: 10px;
+
+        span {
+            background: g-colour("gray", "80");
+            display: inline-block;
+            text-indent: -99999px;
+        }
+
+        &--1 {
+            > span {
+                width: spacing-scale("01");
+            }
+        }
+
+        &--2 {
+            > span {
+                width: spacing-scale("02");
+            }
+        }
+
+        &--3 {
+            > span {
+                width: spacing-scale("03");
+            }
+        }
+
+        &--4 {
+            > span {
+                width: spacing-scale("04");
+            }
+        }
+
+        &--5 {
+            > span {
+                width: spacing-scale("05");
+            }
+        }
+
+        &--6 {
+            > span {
+                width: spacing-scale("06");
+            }
+        }
+
+        &--7 {
+            > span {
+                width: spacing-scale("07");
+            }
+        }
+
+        &--8 {
+            > span {
+                width: spacing-scale("08");
+            }
+        }
+
+        &--9 {
+            > span {
+                width: spacing-scale("09");
+            }
+        }
+
+        &--10 {
+            > span {
+                width: spacing-scale("10");
+            }
+        }
+
+        &--11 {
+            > span {
+                width: spacing-scale("11");
+            }
+        }
+
+        &--12 {
+            > span {
+                width: spacing-scale("12");
+            }
+        }
+    }
+}

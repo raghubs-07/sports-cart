@@ -1,0 +1,39 @@
+{{#partial "page"}}
+    <div class="breadcrumbs-block u-container u-spacing-margin-bottom-8 u-spacing-margin-top-5">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+
+    <section class="page text-component u-container u-spacing-margin-bottom-8">
+        <h1>{{lang 'sitemap.page_title'}}</h1>
+
+
+        {{#each sitemap}}
+            <h2>{{label}}</h2>
+                <ul>
+                    {{#each body}}
+                        {{#contains (split label '-') "hook"}}
+                            {{!-- skip --}}
+                        {{else}}
+                            <li>
+                            
+                                <a href="{{url}}">{{label}}</a>
+                                {{#if children}}
+                                    <ul>
+                                    {{#each children}}
+                                        {{> components/sitemap/links}}
+                                    {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </li>
+                        {{/contains}}
+                    {{/each}}
+                    {{#if show_all_link}}
+                        <li>
+                            <a href="{{subsection_url}}">{{lang 'sitemap.show_all_link'}}</a>
+                        </li>
+                    {{/if}}
+                </ul>
+        {{/each}}
+    </section>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,50 @@
+// Global overlays
+
+.g-overlay {
+    display: none;
+    
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 0;
+    }
+
+    &--active {
+        display: block;
+    }
+    
+    // Modifiers for each el
+    &--wl-drawer::before {
+        z-index: 100;
+    }
+
+    &--mc-drawer::before {
+        z-index:100;
+    }
+
+    &--search-results::before {
+        z-index: 100;
+    }
+    
+    &--fb-drawer::before {
+        z-index:100;
+    }
+
+    &--accNav-drawer::before {
+        z-index:100;
+    }
+
+    &--navigation::before {
+        z-index:100;
+    }
+}
+
+.g-body-overlay--active {
+    overflow: hidden;
+}

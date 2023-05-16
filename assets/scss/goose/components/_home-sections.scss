@@ -1,0 +1,33 @@
+.home-section {
+    margin-bottom: spacing-scale("12");
+
+    &--hero {
+        overflow-x: hidden;
+        padding-bottom: spacing-scale("12");
+        margin-bottom: layout-scale("4");
+    }
+
+    &--trust-factor {
+        margin-bottom: 0 !important;
+    }
+
+    @include breakpoint("medium") {
+        margin-bottom: spacing-scale("8") * 2;
+    }
+
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__heading {
+        font-size: var(--text-preset-6);
+        color: g-colour("gray", "80");
+        margin-bottom: spacing-scale("8");
+
+        @include breakpoint("small") {
+            font-size: var(--text-preset-7);
+        }
+    }
+}

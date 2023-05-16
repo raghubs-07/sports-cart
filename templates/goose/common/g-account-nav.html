@@ -1,0 +1,38 @@
+<div class="accNav-drawer-wrap">
+    <div class="accNav-drawer accNav" id="accNav-drawer"> 
+        <div class="accNav__header-wrap">
+            <div class="accNav__header">
+                <h5 class="heading"><span class="accNav__user-icon"><svg><use xlink:href="#icon-club"></svg></span> Hey {{customer.name}}!</h5>
+                <a class="close">
+                    <i class="icon">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+                        </svg>
+                    </i>
+                </a>
+            </div>
+        </div>
+        <div class="accNav__body">
+            <ul class="accNav__nav side-drawer__items">
+                <ul class="accNav__nav__list">
+                    <li class="accNav__nav__item {{#if page_type '==' 'editaccount'}}accNav__nav__item--active{{/if}}">
+                        <a href="{{urls.account.details}}" class="accNav__nav__action ">Your details</a>
+                    </li>
+                    <li class="accNav__nav__item {{#if page_type '==' 'account_orderstatus'}}accNav__nav__item--active{{/if}}">
+                        <a href="{{urls.account.orders.all}}" class="accNav__nav__action">Your orders</a>
+                    </li>
+                    <li class="accNav__nav__item {{#if page_type '==' 'account_addressbook'}}accNav__nav__item--active{{/if}}">
+                        <a href="{{urls.account.addresses}}" class="accNav__nav__action">Your addresses</a>
+                    </li>
+                    <li class="accNav__nav__item {{#if page_type '==' 'wishlists'}}accNav__nav__item--active{{/if}}">
+                        <a href="{{urls.account.wishlists.all}}" class="accNav__nav__action">Wishlist</a>
+                    </li>
+                    <li class="accNav__nav__item">
+                        <a href="{{urls.auth.logout}}" class="accNav__nav__action">Sign Out</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>

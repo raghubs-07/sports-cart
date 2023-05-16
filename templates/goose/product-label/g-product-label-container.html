@@ -1,0 +1,10 @@
+{{!-- 
+    Needs 3 values passed:
+    vertical : top, center, bottom
+    horizontal: left, center, Right
+    type: sale, pre order
+--}}
+<div class="product-label product-label--v{{capitalize vertical}} product-label--h{{capitalize horizontal}}" >
+    {{#block "inner-label"}}
+    {{/block}}
+</div>

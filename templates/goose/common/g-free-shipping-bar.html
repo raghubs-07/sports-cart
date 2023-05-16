@@ -1,0 +1,19 @@
+
+{{assignVar "shipping-threshold" 65}}
+
+<div class="free-shipping-bar" data-shipping-threshold='{{getVar "shipping-threshold"}}'>
+    <div class="free-shipping-bar__top">
+        <div class="free-shipping-bar__left">
+            M
+        </div>
+        <div class="free-shipping-bar__middle">
+            <div class="free-shipping-bar__progress" {{!-- style="width: {{divide (multiply 100 this.cart.sub_total.value) 125}}%"--}}></div>
+        </div>
+        <div class="free-shipping-bar__right">
+            $<span>{{getVar "shipping-threshold"}}</span>
+        </div>
+    </div>
+    <div class="free-shipping-bar__bottom">
+        Spend an extra $65 to unlock Free Shipping
+    </div>
+</div>

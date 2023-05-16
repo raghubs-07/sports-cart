@@ -1,0 +1,110 @@
+:root {
+    --sd-width-sm: #{remCalc(345px)};
+    --sd-width: #{remCalc(345px)};
+    --sd-width-lg: #{remCalc(345px)};
+    --menu-close-btn-width: #{remCalc(44px)};
+}
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    max-width: calc(#{var(--sd-width)} * 2 + #{var(--menu-close-btn-width)});
+    height: 100vh;
+    z-index: g-zindex("offcanvas");
+    // overflow: auto;
+    transform: translateX(-100%);
+    transition: transform 110ms cubic-bezier(0, 0, 0.38, 0.9);
+
+    &--right {
+        right: 0;
+        left: initial;
+    }
+
+    &--left {
+        left: 0;
+        right: initial;
+    }
+
+    &.is-open {
+        transform: translateX(100vw);
+        transform: translateX(0);
+        width: 100%;
+
+        .main-menu-close {
+            display: block;
+        }
+    }
+
+    // // To Do: Might need more time and consideration
+    // //:has has poor compatability
+    // &:has(.is-open) {
+    //     width: calc(#{var(--sd-width)} * 2);
+    // }
+}
+
+.side-drawer__item {
+    padding: spacing-scale("6");
+
+    &__wrap {
+        display: flex;
+        min-height: remCalc(100px);
+        position: relative;
+        width: 100%;
+        padding-bottom: spacing-scale("4");
+    }
+
+    &__img {
+        aspect-ratio: 1 / 1;
+        margin-right: spacing-scale("4");
+
+        img {
+            max-width: remCalc(96px);
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: g-heading("6");
+        flex: auto;
+
+        .heading {
+            margin-bottom: spacing-scale("2");
+            font-size: g-heading("5");
+        }
+
+        .price {
+            font-weight: g-font-weight("bold");
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__action {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: g-colour("gray", "20");
+        margin-top: spacing-scale("4");
+
+        button {
+            font-weight: g-font-weight("bold") !important;
+        }
+    }
+
+    // // To Do: Might need more time and consideration
+    // //:has has poor compatability
+    // &:has(.is-open) {
+    //     width: calc(#{var(--sd-width)} * 2);
+    // }
+}

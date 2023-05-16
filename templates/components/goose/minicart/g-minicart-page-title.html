@@ -1,0 +1,10 @@
+<span class="cart-summary__title">
+    Cart
+</span>
+<div class="cart-summary__qty">
+    {{#if cart.quantity '===' 1}}
+        ({{cart.quantity}} item)
+    {{else}}
+        ({{cart.quantity}} items)
+    {{/if}}
+</div>
